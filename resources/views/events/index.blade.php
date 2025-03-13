@@ -2,36 +2,38 @@
 
 @section('title', 'GiveLink')
 
-@section('page-title', 'Manage and oversee campaigns')
+@section('page-title', 'Manage and oversee events')
 
 @section('content')
 
+
 <div class="p-6">
+  <!-- Event List -->
   <div class="mb-6">
-    <h2 class="text-xl font-semibold text-gray-800 mb-4">Active Campaigns</h2>
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">Upcoming Events</h2>
     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center space-x-4">
-          <div class="h-12 w-12 rounded-lg bg-emerald-100 flex items-center justify-center">
-            <i class="fas fa-tree text-emerald-700"></i>
+          <div class="h-12 w-12 rounded-lg bg-indigo-100 flex items-center justify-center">
+            <i class="fas fa-calendar-alt text-indigo-700"></i>
           </div>
           <div>
-            <h3 class="font-semibold">Save the Forests</h3>
-            <p class="text-sm text-gray-500">Environmental Campaign</p>
+            <h3 class="font-semibold">Beach Cleanup</h3>
+            <p class="text-sm text-gray-500">Environmental Event</p>
           </div>
         </div>
         <div class="flex space-x-2">
-          <button class="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-md text-sm hover:bg-emerald-200 transition-colors">Edit</button>
+          <button class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-md text-sm hover:bg-indigo-200 transition-colors">Edit</button>
           <button class="px-4 py-2 bg-red-100 text-red-700 rounded-md text-sm hover:bg-red-200 transition-colors">Delete</button>
           <button class="px-4 py-2 bg-blue-100 text-blue-700 rounded-md text-sm hover:bg-blue-200 transition-colors">Approve</button>
         </div>
       </div>
-      <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
-        <div class="bg-emerald-500 h-2 rounded-full" style="width: 60%"></div>
-      </div>
       <div class="flex justify-between text-sm text-gray-600 mb-4">
-        <p>Goal: $10,000</p>
-        <p>Raised: $6,000</p>
+        <p>Date: April 10, 2025</p>
+        <p>Location: Miami Beach</p>
+      </div>
+      <div class="text-sm text-gray-600">
+        <p>Volunteers: 24</p>
       </div>
     </div>
   </div>
@@ -40,28 +42,29 @@
     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center space-x-4">
-          <div class="h-12 w-12 rounded-lg bg-amber-100 flex items-center justify-center">
-            <i class="fas fa-utensils text-amber-700"></i>
+          <div class="h-12 w-12 rounded-lg bg-indigo-100 flex items-center justify-center">
+            <i class="fas fa-calendar-alt text-indigo-700"></i>
           </div>
           <div>
-            <h3 class="font-semibold">Feed the Homeless</h3>
+            <h3 class="font-semibold">Food Bank Distribution</h3>
             <p class="text-sm text-gray-500">Community Support</p>
           </div>
         </div>
         <div class="flex space-x-2">
-          <button class="px-4 py-2 bg-amber-100 text-amber-700 rounded-md text-sm hover:bg-amber-200 transition-colors">Edit</button>
+          <button class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-md text-sm hover:bg-indigo-200 transition-colors">Edit</button>
           <button class="px-4 py-2 bg-red-100 text-red-700 rounded-md text-sm hover:bg-red-200 transition-colors">Delete</button>
           <button class="px-4 py-2 bg-blue-100 text-blue-700 rounded-md text-sm hover:bg-blue-200 transition-colors">Approve</button>
         </div>
       </div>
-      <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
-        <div class="bg-amber-500 h-2 rounded-full" style="width: 40%"></div>
-      </div>
       <div class="flex justify-between text-sm text-gray-600 mb-4">
-        <p>Goal: $5,000</p>
-        <p>Raised: $2,000</p>
+        <p>Date: April 15, 2025</p>
+        <p>Location: Central Park</p>
+      </div>
+      <div class="text-sm text-gray-600">
+        <p>Volunteers: 42</p>
       </div>
     </div>
   </div>
 </div>
+
 @endsection

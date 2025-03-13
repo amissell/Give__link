@@ -9,9 +9,6 @@
         </button>
         <button class="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200">
             <i class="fas fa-envelope"></i>
-        </button>
-        <button class="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-md hover:bg-emerald-200 transition-colors">
-            <i class="fas fa-sign-out-alt mr-2"></i>Logout
-        </button>
+        </button> 
     </div>
 </div>
