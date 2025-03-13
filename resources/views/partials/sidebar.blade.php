@@ -21,7 +21,7 @@
         <i class="fas fa-heart"></i>
         <span>Donors</span>
       </a>
-      <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
+      <a href="{{route('Volunteers.index')}}" class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
         <i class="fas fa-users"></i>
         <span>Volunteers</span>
       </a>

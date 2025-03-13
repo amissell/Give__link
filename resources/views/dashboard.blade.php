@@ -62,4 +62,43 @@
     </p>
   </div>
 </div>
+
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mt-6">
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">Manage Users</h2>
+
+    <!-- User Table -->
+    <table class="w-full table-auto border-collapse">
+        <thead>
+            <tr>
+                <th class="px-4 py-2 text-left border-b">Name</th>
+                <th class="px-4 py-2 text-left border-b">Email</th>
+                <th class="px-4 py-2 text-left border-b">Status</th>
+                <th class="px-4 py-2 text-left border-b">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example User Loop -->
+                <tr>
+                    <td class="px-4 py-2 border-b"></td>
+                    <td class="px-4 py-2 border-b"></td>
+                    <td class="px-4 py-2 border-b">
+                            <span class="text-red-500">Banned</span>
+                            <span class="text-green-500">Active</span>
+                    </td>
+                    <td class="px-4 py-2 border-b">
+                            <!-- Unban Button -->
+                            <form action="#" method="POST">
+                                @csrf
+                                <button type="submit" class="text-sm text-green-600 hover:text-green-800">Unban</button>
+                            </form>
+                            <!-- Ban Button -->
+                            <form action="#" method="POST">
+                                @csrf
+                                <button type="submit" class="text-sm text-red-600 hover:text-red-800">Ban</button>
+                            </form>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</div>
 @endsection

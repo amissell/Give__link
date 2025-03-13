@@ -33,3 +33,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/Donors', function () {
   return view(('Donors.index'));
 })->name('Donors.index');
+
+Route::get('/Volnteers', function (){
+  return view(('Volunteers.index'));
+})->name('Volunteers.index');

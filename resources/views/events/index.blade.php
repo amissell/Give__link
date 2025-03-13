@@ -8,7 +8,6 @@
 
 
 <div class="p-6">
-  <!-- Event List -->
   <div class="mb-6">
     <h2 class="text-xl font-semibold text-gray-800 mb-4">Upcoming Events</h2>
     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
@@ -23,9 +22,9 @@
           </div>
         </div>
         <div class="flex space-x-2">
-          <button class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-md text-sm hover:bg-indigo-200 transition-colors">Edit</button>
+          <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm hover:bg-gray-200 transition-colors">Edit</button>
           <button class="px-4 py-2 bg-red-100 text-red-700 rounded-md text-sm hover:bg-red-200 transition-colors">Delete</button>
-          <button class="px-4 py-2 bg-blue-100 text-blue-700 rounded-md text-sm hover:bg-blue-200 transition-colors">Approve</button>
+          <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm hover:bg-gray-200 transition-colors">Approve</button>
         </div>
       </div>
       <div class="flex justify-between text-sm text-gray-600 mb-4">
@@ -51,9 +50,9 @@
           </div>
         </div>
         <div class="flex space-x-2">
-          <button class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-md text-sm hover:bg-indigo-200 transition-colors">Edit</button>
+          <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm hover:bg-gray-200 transition-colors">Edit</button>
           <button class="px-4 py-2 bg-red-100 text-red-700 rounded-md text-sm hover:bg-red-200 transition-colors">Delete</button>
-          <button class="px-4 py-2 bg-blue-100 text-blue-700 rounded-md text-sm hover:bg-blue-200 transition-colors">Approve</button>
+          <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md text-sm hover:bg-gray-200 transition-colors">Approve</button>
         </div>
       </div>
       <div class="flex justify-between text-sm text-gray-600 mb-4">
