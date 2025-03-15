@@ -29,7 +29,7 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'showRegistrationForm']);
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/Donors', function () {
   return view(('Donors.index'));
