@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-// use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 
 Route::get('/', function () {
@@ -39,4 +39,7 @@ Route::get('/Volnteers', function (){
   return view(('Volunteers.index'));
 })->name('Volunteers.index');
 
-// Route::get('verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verify.email');
+Route::get('forgot-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('password.request');
+Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('password.email');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
+Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
