@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('title', 'Edit Campaign')
 
@@ -33,4 +33,4 @@
         document.getElementById('edit-campaign').classList.toggle('hidden');
     });
 </script>
-@endsection
+@endsection --}}

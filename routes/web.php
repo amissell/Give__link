@@ -14,9 +14,16 @@ Route::get('/dashboard', function () {
   return view('dashboard');
 })->name('dashboard');
 
-Route::get('/campaigns', function () {
-  return view('campaigns.index'); 
-})->name('campaigns.index');
+Route::get('/Organizations', function () {
+  return view('Organizations.index'); 
+})->name('Organizations.index');
+Route::get('/Categories', function () {
+  return view('Categories.index'); 
+})->name('Categories.index');
+
+// Route::get('/organizations/{id}', [OrganizationController::class, 'show'])->name('organizations.show');
+
+Route::get('/events/{event}')->name('events.show');
 
 Route::get('/events', function () {
   return view('events.index');
@@ -31,9 +38,9 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/Donors', function () {
-  return view(('Donors.index'));
-})->name('Donors.index');
+Route::get('/Donations', function () {
+  return view(('Donations.index'));
+})->name('Donations.index');
 
 Route::get('/Volnteers', function (){
   return view(('Volunteers.index'));

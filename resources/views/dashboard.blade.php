@@ -1,104 +1,87 @@
 @extends('layouts.app')
 
-@section('title', 'GiveLink Dashboard')
+@section('title', 'Admin Dashboard')
 
-@section('page-title', 'Dashboard Overview')
+@section('page-title', 'Admin Dashboard Overview')
 
 @section('content')
 <!-- Stats Cards -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+  <!-- Pending Organizations -->
   <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
     <div class="flex justify-between items-center mb-4">
       <div>
-        <p class="text-sm font-medium text-gray-500">Total Donations</p>
-        <h3 class="text-2xl font-bold text-emerald-700">$45,000</h3>
-      </div>
-      <div class="p-3 rounded-full bg-emerald-100 text-emerald-700">
-        <i class="fas fa-dollar-sign"></i>
-      </div>
-    </div>
-    <p class="text-xs text-gray-500">
-      <span class="text-emerald-500"><i class="fas fa-arrow-up mr-1"></i>12%</span> from last month
-    </p>
-  </div>
-  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-    <div class="flex justify-between items-center mb-4">
-      <div>
-        <p class="text-sm font-medium text-gray-500">Active Campaigns</p>
-        <h3 class="text-2xl font-bold text-indigo-700">10</h3>
+        <p class="text-sm font-medium text-gray-500">Pending Organizations</p>
+        <h3 class="text-2xl font-bold text-indigo-700"></h3>
       </div>
       <div class="p-3 rounded-full bg-indigo-100 text-indigo-700">
-        <i class="fas fa-bullhorn"></i>
+        <i class="fas fa-users"></i>
       </div>
     </div>
-    <p class="text-xs text-gray-500">
-      <span class="text-indigo-500"><i class="fas fa-arrow-up mr-1"></i>2</span> new this week
-    </p>
+    <a href="" class="text-sm text-indigo-600 hover:underline">View Pending</a>
   </div>
+  
+  <!-- Pending Events -->
   <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
     <div class="flex justify-between items-center mb-4">
       <div>
-        <p class="text-sm font-medium text-gray-500">Upcoming Events</p>
-        <h3 class="text-2xl font-bold text-amber-600">5</h3>
+        <p class="text-sm font-medium text-gray-500">Pending Events</p>
+        <h3 class="text-2xl font-bold text-amber-600"></h3>
       </div>
       <div class="p-3 rounded-full bg-amber-100 text-amber-600">
         <i class="fas fa-calendar-alt"></i>
       </div>
     </div>
-    <p class="text-xs text-gray-500">Next event in <span class="text-amber-600">3 days</span></p>
+    <a href="" class="text-sm text-amber-600 hover:underline">View Pending</a>
   </div>
+  
+  <!-- Pending Donations -->
   <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
     <div class="flex justify-between items-center mb-4">
       <div>
-        <p class="text-sm font-medium text-gray-500">Volunteers</p>
-        <h3 class="text-2xl font-bold text-purple-700">128</h3>
+        <p class="text-sm font-medium text-gray-500">Pending Donations</p>
+        <h3 class="text-2xl font-bold text-emerald-700"></h3>
       </div>
-      <div class="p-3 rounded-full bg-purple-100 text-purple-700">
+      <div class="p-3 rounded-full bg-emerald-100 text-emerald-700">
+        <i class="fas fa-dollar-sign"></i>
+      </div>
+    </div>
+    <a href="" class="text-sm text-emerald-600 hover:underline">View Pending</a>
+  </div>
+  
+  <!-- Total Organizations -->
+  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <p class="text-sm font-medium text-gray-500">Total Organizations</p>
+        <h3 class="text-2xl font-bold text-indigo-700"></h3>
+      </div>
+      <div class="p-3 rounded-full bg-indigo-100 text-indigo-700">
         <i class="fas fa-users"></i>
       </div>
     </div>
-    <p class="text-xs text-gray-500">
-      <span class="text-purple-500"><i class="fas fa-arrow-up mr-1"></i>5%</span> from last month
-    </p>
   </div>
 </div>
 
-<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mt-6">
-    <h2 class="text-xl font-semibold text-gray-700 mb-4">Manage Users</h2>
+<!-- Quick Actions Section -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+  <!-- Accept Organization -->
+  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+    <h3 class="text-xl font-semibold text-gray-800 mb-4">Accept New Organizations</h3>
+    <a href="" class="block text-lg text-indigo-600 hover:underline">View and Accept Organizations</a>
+  </div>
 
-    <!-- User Table -->
-    <table class="w-full table-auto border-collapse">
-        <thead>
-            <tr>
-                <th class="px-4 py-2 text-left border-b">Name</th>
-                <th class="px-4 py-2 text-left border-b">Email</th>
-                <th class="px-4 py-2 text-left border-b">Status</th>
-                <th class="px-4 py-2 text-left border-b">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Example User Loop -->
-                <tr>
-                    <td class="px-4 py-2 border-b"></td>
-                    <td class="px-4 py-2 border-b"></td>
-                    <td class="px-4 py-2 border-b">
-                            <span class="text-red-500">Banned</span>
-                            <span class="text-green-500">Active</span>
-                    </td>
-                    <td class="px-4 py-2 border-b">
-                            <!-- Unban Button -->
-                            <form action="#" method="POST">
-                                @csrf
-                                <button type="submit" class="text-sm text-green-600 hover:text-green-800">Unban</button>
-                            </form>
-                            <!-- Ban Button -->
-                            <form action="#" method="POST">
-                                @csrf
-                                <button type="submit" class="text-sm text-red-600 hover:text-red-800">Ban</button>
-                            </form>
-                    </td>
-                </tr>
-        </tbody>
-    </table>
+  <!-- Accept Event -->
+  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+    <h3 class="text-xl font-semibold text-gray-800 mb-4">Accept Upcoming Events</h3>
+    <a href="" class="block text-lg text-amber-600 hover:underline">View and Accept Events</a>
+  </div>
+
+  <!-- Accept Donations -->
+  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+    <h3 class="text-xl font-semibold text-gray-800 mb-4">Accept Donations</h3>
+    <a href="" class="block text-lg text-emerald-600 hover:underline">View and Accept Donations</a>
+  </div>
 </div>
+
 @endsection
