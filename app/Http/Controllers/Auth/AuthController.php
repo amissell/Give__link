@@ -70,38 +70,13 @@ class AuthController extends Controller
     return redirect()->intended('/dashboard');
   }
 
-  // Handle password reset form submission
-  // public function submitForgetPasswordForm(Request $request)
-  // {
-  //   $request->validate([
-  //     'email' => 'required|email|exists:users',
-  //   ]);
 
-  //   $this->authService->handlePasswordResetRequest($request->email);
 
-  //   return back()->with('message', 'We have e-mailed your password reset link!');
-  // }
-
-  // // Show reset password form
-  // public function showResetPasswordForm($token)
-  // {
-  //   return view('auth.resetPassword', ['token' => $token]);
-  // }
-
-  // // Handle password reset logic
-  // public function resetPassword(Request $request)
-  // {
-  //   $request->validate([
-  //     'token' => 'required',
-  //     'email' => 'required|email|exists:users',
-  //     'password' => 'required|confirmed|min:6',
-  //   ]);
-
-  //   try {
-  //     $this->authService->resetPassword($request->all());
-  //     return redirect('/login')->with('message', 'Your password has been reset successfully!');
-  //   } catch (\Exception $e) {
-  //     return back()->withErrors(['email' => 'Invalid reset token or email.']);
-  //   }
-  // }
+  public function logout(Request $request)
+   {
+     Auth::logout();
+     $request->session()->invalidate();
+     $request->session()->regenerateToken();
+     return redirect('/login')->with('success', 'you have been logged out');    
+   }
 }
