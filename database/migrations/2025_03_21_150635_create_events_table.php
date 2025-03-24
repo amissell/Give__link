@@ -6,28 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('events', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('organization_id')->constrained()->onDelete('cascade');
-            $table->string('title');
-            $table->text('description');
-            $table->dateTime('date');
-            $table->string('location');
-            $table->enum('status', ['pending', 'approved', 'rejected']);
-            $table->timestamps();
-        });
-    }
+  /**
+   * Run the migrations.
+   */
+  public function up(): void
+  {
+    Schema::create('events', function (Blueprint $table) {
+      $table->id();
+      $table->foreignId('organization_id')->constrained()->onDelete('cascade');
+      $table->string('title');
+      $table->text('description');
+      $table->string('image')->nullable();
+      $table->enum('situation', ['completed', 'cancelled', 'in progress'])->default('in progress');
+      $table->integer('capacity')->default(0);
+      $table->dateTime('startEventAt')->nullable(false);
+      $table->dateTime('endEventAt')->nullable(false);
+      $table->foreignId('ville_id')->nullable()->constrained('villes')->onDelete('set null');
+      $table->timestamps();
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('events');
-    }
+  /**
+   * Reverse the migrations.
+   */
+  public function down(): void
+  {
+    Schema::dropIfExists('events');
+  }
 };
