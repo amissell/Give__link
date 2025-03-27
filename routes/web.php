@@ -4,10 +4,11 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\CategoryController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome'); 
 });
 
 Route::get('/dashboard', function () {
@@ -50,3 +51,7 @@ Route::get('forgot-password', [ForgotPasswordController::class, 'showForgetPassw
 Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('password.email');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+
+Route::post('/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
