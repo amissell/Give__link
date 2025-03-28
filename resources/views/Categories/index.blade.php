@@ -8,11 +8,11 @@
         @endif
 
         <div class="mb-4">
-            <form action="{{ route('admin.categories.store') }}" method="POST">
+            <form action="{{ route('categories.store') }}" method="POST">
                 @csrf
                 <input type="text" name="name" placeholder="Enter Category Name" class="border p-2 rounded" required>
                 <button type="submit" class="bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700">Add
-                    Category</button>
+                    Category</button> 
             </form>
         </div>
 
@@ -25,16 +25,18 @@
                 </tr>
             </thead>
             <tbody>
+               {{-- {{ dd($categories) }} --}}
                 @if ($categories->isEmpty())
                     <p>No categories available.</p>
                 @else
                     @foreach ($categories as $category)
+                    {{-- {{dd($category)}} --}}
                         <tr>
-                            <td class="border px-4 py-2">{{ $category->id }}</td>
+                            <td class="border px-4 py-2">{{ $category->id }}</td> 
                             <td class="border px-4 py-2">{{ $category->name }}</td>
                             <td class="border px-4 py-2">
-                                <a href="{{ route('admin.categories.edit', $category->id) }}" class="text-blue-600">Edit</a>
-                                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST"
+                                <a href="{{ route('categories.edit', $category->id) }}" class="text-blue-600">Edit</a>
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
                                     class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to delete this category?')">
                                     @csrf

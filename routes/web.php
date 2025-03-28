@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\CategoryController;
-
+use App\Models\Category;
 
 Route::get('/', function () {
     return view('welcome'); 
@@ -52,6 +52,8 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
-
-Route::post('/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categories/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
