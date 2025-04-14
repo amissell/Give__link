@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\UserController;
 use App\Models\Category;
 
 Route::get('/', function () {
@@ -57,3 +58,9 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::get('/categories/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+
+Route::middleware(['auth', 'role:admin'])->group(function(){
+  Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+  Route::get('/users', [UserController::class, 'index'])->name('users.index');
+});

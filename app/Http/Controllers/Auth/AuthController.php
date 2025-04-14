@@ -66,8 +66,19 @@ class AuthController extends Controller
       return back()->withErrors(['email' => 'Invalid credentials']);
     }
 
-    Auth::login($user);
-    return redirect()->intended('/dashboard');
+    Auth::login($user); 
+
+
+    if (Auth::user()->role === 'admin') {
+      // Redirect admin to the dashboard
+      return redirect()->route('dashboard');
+  } elseif (Auth::user()->role === 'organization') {
+      // Redirect organization to their page (e.g., events management)
+      return redirect()->route('events.index');
+  } else {
+      // Redirect other users to their respective page (e.g., home)
+      return redirect('/dashboard');
+  }
   }
 
 
