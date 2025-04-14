@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\UserController;
-use App\Models\Category;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrganizationController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::get('/', function () {
     return view('welcome'); 
@@ -16,9 +17,13 @@ Route::get('/dashboard', function () {
   return view('dashboard');
 })->name('dashboard');
 
-Route::get('/Organizations', function () {
-  return view('Organizations.index'); 
-})->name('Organizations.index');
+Route::get('/', function () {
+  return view('home');
+})->name('home');
+
+// Route::get('/Organizations', function () {
+//   return view('Organizations.index'); 
+// })->name('Organizations.index');
 
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
@@ -64,3 +69,10 @@ Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword']
 //   Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 //   Route::get('/users', [UserController::class, 'index'])->name('users.index');
 // });
+
+
+
+Route::patch('/admin/organizations/{id}/accept', [OrganizationController::class, 'accept'])->name('admin.organizations.accept');
+Route::patch('/admin/organizations/{id}/reject', [OrganizationController::class, 'reject'])->name('admin.organizations.reject');
+
+Route::resource('organizations', OrganizationController::class);

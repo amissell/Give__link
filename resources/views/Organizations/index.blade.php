@@ -40,65 +40,73 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Example Organization Row -->
-      <tr>
-        <td class="border px-4 py-4 text-gray-600">Non-Profit Org</td>
-        <td class="border px-4 py-4 text-gray-600">Health & Wellness</td>
-        <td class="border px-4 py-4 text-gray-600">Dedicated to improving mental health in underprivileged areas.</td>
-        <td class="border px-4 py-4 text-yellow-500">Pending</td>
-        <td class="border px-4 py-4">
-          <button class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
-            Approve
-          </button>
-          <button class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 ml-4">
-            Reject
-          </button>
-          <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-4" onclick="toggleDetails('details-1')">
-            View Details
-          </button>
-        </td>
-      </tr>
+      @foreach ($organizations as $organization)
+        <tr>
+          <td class="border px-4 py-4 text-gray-600">{{ $organization->name }}</td>
+          <td class="border px-4 py-4 text-gray-600">{{ $organization->category}}</td>
+          <td class="border px-4 py-4 text-gray-600">{{ Str::limit($organization->mission, 60) }}</td>
+          <td class="border px-4 py-4">
+            @if ($organization->status === 'pending')
+              <span class="text-yellow-500 font-semibold">Pending</span>
+            @elseif ($organization->status === 'accepted')
+              <span class="text-green-500 font-semibold">Accepted</span>
+            @elseif ($organization->status === 'rejected')
+              <span class="text-red-500 font-semibold">Rejected</span>
+            @endif
+          </td>
+          <td class="border px-4 py-4">
+            @if ($organization->status === 'pending')
+              <a href="{{ route('admin.organizations.accept', $organization->id) }}"
+                 class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
+                Approve
+              </a>
+              <a href="{{ route('admin.organizations.reject', $organization->id) }}"
+                 class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 ml-2">
+                Reject
+              </a>
+            @else
+              <span class="text-gray-500">{{ ucfirst($organization->status) }}</span>
+            @endif
 
-      <!-- Example Expanded Details Section -->
-      <tr id="details-1" class="bg-gray-50 hidden">
-        <td colspan="5" class="border px-4 py-4 text-gray-600">
-          <p><strong>Contact Email:</strong> example@nonprofit.org</p>
-          <p><strong>Contact Phone:</strong> +1 (555) 123-4567</p>
-          <p><strong>Website:</strong> <a href="https://example.com" class="text-blue-500">example.com</a></p>
-          <p><strong>Registration Document:</strong> <a href="#" class="text-blue-500">View Document</a></p>
-        </td>
-      </tr>
+            <button class="bg-blue-500 text-white px-3 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-2"
+                    onclick="toggleDetails('details-{{ $organization->id }}')">
+              View Details
+            </button>
+          </td>
+        </tr>
 
-      <!-- Another Example Organization Row -->
-      <tr>
-        <td class="border px-4 py-4 text-gray-600">Green Earth</td>
-        <td class="border px-4 py-4 text-gray-600">Environment</td>
-        <td class="border px-4 py-4 text-gray-600">Focused on reforestation and combating climate change.</td>
-        <td class="border px-4 py-4 text-green-500">Accepted</td>
-        <td class="border px-4 py-4">
-          <span class="text-green-500">Approved</span>
-        </td>
-      </tr>
+        <!-- Expandable Details -->
+        <tr id="details-{{ $organization->id }}" class="bg-gray-50 hidden">
+          <td colspan="5" class="border px-4 py-4 text-gray-600">
+            <p><strong>Contact Email:</strong> {{ $organization->contact_email }}</p>
+            <p><strong>Contact Phone:</strong> {{ $organization->contact_phone }}</p>
+            <p><strong>Website:</strong> <a href="{{ $organization->website }}" class="text-blue-500" target="_blank">{{ $organization->website }}</a></p>
+            <p><strong>Registration Document:</strong> 
+              @if ($organization->registration_document)
+                <a href="{{ asset('documents/' . $organization->registration_document) }}" class="text-blue-500" target="_blank">View Document</a>
+              @else
+                <span class="text-gray-400">No Document Uploaded</span>
+              @endif
+            </p>
+          </td>
+        </tr>
+      @endforeach
     </tbody>
   </table>
 
-  <!-- Optional Pagination for Organizations -->
+  <!-- Pagination -->
   <div class="mt-6 flex justify-center">
-    <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
-      Previous
-    </button>
-    <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-4">
-      Next
-    </button>
+    {{ $organizations->links() }}
   </div>
 </div>
 
+<!-- Toggle Script -->
 <script>
-  // Toggle the visibility of the organization's details
   function toggleDetails(id) {
-    const detailsRow = document.getElementById(id);
-    detailsRow.classList.toggle('hidden');
+    const row = document.getElementById(id);
+    if (row) {
+      row.classList.toggle('hidden');
+    }
   }
 </script>
-
 @endsection
