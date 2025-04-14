@@ -25,6 +25,12 @@ Route::get('/', function () {
 //   return view('Organizations.index'); 
 // })->name('Organizations.index');
 
+Route::view('/causes', 'causes')->name('causes');
+Route::view('/events', 'events')->name('events');
+Route::view('/organizations', 'organizations')->name('organizations');
+Route::view('/about', 'about')->name('about');
+
+
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
