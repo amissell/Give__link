@@ -19,7 +19,7 @@
         <table class="w-full border-collapse border border-gray-300">
             <thead>
                 <tr class="bg-gray-200">
-                    <th class="border px-4 py-2">#</th>
+                    <!-- <th class="border px-4 py-2">#</th> -->
                     <th class="border px-4 py-2">Name</th>
                     <th class="border px-4 py-2">Actions</th>
                 </tr>

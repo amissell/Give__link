@@ -21,12 +21,12 @@
                     <span>Manage Organizations</span>
                 </a>
 
-                <a href="{{ route('Categories.index') }}"
+                <a href="{{ route('categories.index') }}"
                     class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
                     <i class="fas fa-tags"></i>
                     <span>Manage Categories</span>
                 </a>
-                <a href="{{ route('users.index') }}"
+                <a href="#"
                     class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
                     <i class="fas fa-user-cog"></i>
                     <span>Manage Users</span>

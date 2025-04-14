@@ -19,9 +19,14 @@ Route::get('/dashboard', function () {
 Route::get('/Organizations', function () {
   return view('Organizations.index'); 
 })->name('Organizations.index');
-Route::get('/Categories', function () {
-  return view('Categories.index'); 
-})->name('Categories.index');
+
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categories/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
 
 // Route::get('/organizations/{id}', [OrganizationController::class, 'show'])->name('organizations.show');
 
@@ -53,14 +58,9 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPa
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-Route::get('/categories/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
-Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 
-Route::middleware(['auth', 'role:admin'])->group(function(){
-  Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-  Route::get('/users', [UserController::class, 'index'])->name('users.index');
-});
+// Route::middleware(['auth', 'role:admin'])->group(function(){
+//   Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+//   Route::get('/users', [UserController::class, 'index'])->name('users.index');
+// });
