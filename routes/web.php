@@ -9,9 +9,6 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrganizationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
-Route::get('/', function () {
-    return view('welcome'); 
-});
 
 Route::get('/dashboard', function () {
   return view('dashboard');
@@ -26,8 +23,8 @@ Route::get('/', function () {
 // })->name('Organizations.index');
 
 Route::view('/causes', 'causes')->name('causes');
-Route::view('/events', 'events')->name('events');
-Route::view('/organizations', 'organizations')->name('organizations');
+// Route::view('/events', 'events')->name('events');
+// Route::view('/organizations', 'organizations')->name('organizations');
 Route::view('/about', 'about')->name('about');
 
 
@@ -41,11 +38,15 @@ Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])-
 
 // Route::get('/organizations/{id}', [OrganizationController::class, 'show'])->name('organizations.show');
 
-Route::get('/events/{event}')->name('events.show');
+// Route::get('/events/{event}')->name('events.show');
 
 Route::get('/events', function () {
-  return view('events.index');
-})->name('events.index');
+  return view('events');
+})->name('events');
+
+Route::get('/organisations', function () {
+  return view('organisations');
+})->name('organisations');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm']);

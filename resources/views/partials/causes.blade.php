@@ -1,4 +1,4 @@
-@extends('public')
+@extends('layouts.public')
 
 @section('title', 'Causes')
 
@@ -9,6 +9,5 @@
       <h2 class="text-xl font-semibold">Education for All</h2>
       <p class="text-gray-600 mt-2">We aim to provide education access to underserved communities.</p>
     </div>
-    <!-- Add more cause cards -->
   </div>
 @endsection

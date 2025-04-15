@@ -4,7 +4,7 @@
 
 @include('partials.causes')
 @include('partials.events')
-@include('partials.organizations')
+@include('partials.organisations')
 @include('partials.about')
 
 @endsection

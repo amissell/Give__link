@@ -29,7 +29,7 @@
 
         <!-- Navigation Links -->   
         <div class="hidden space-x-8 sm:ml-10 sm:flex">
-          <a href="{{url ('/')}}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-green-200 focus:outline-none focus:text-green-300 transition">
+          <a href="{{route('home') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-green-200 focus:outline-none focus:text-green-300 transition">
             Home
           </a>
           <a href="{{ route('causes') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-green-200 focus:outline-none focus:text-green-300 transition">
@@ -38,7 +38,7 @@
           <a href="{{ route('events') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-green-200 focus:outline-none focus:text-green-300 transition">
             Events
           </a>
-          <a href="{{ route('organizations') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-green-200 focus:outline-none focus:text-green-300 transition">
+          <a href="{{ route('organisations') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-green-200 focus:outline-none focus:text-green-300 transition">
             Organizations
           </a>
           <a href="{{ route('about') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-green-200 focus:outline-none focus:text-green-300 transition">
