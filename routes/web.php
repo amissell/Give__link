@@ -14,7 +14,7 @@ Route::get('/dashboard', function () {
   return view('dashboard');
 })->name('dashboard');
 
-Route::get('/', function () {
+Route::get('/home', function () {
   return view('home');
 })->name('home');
 
