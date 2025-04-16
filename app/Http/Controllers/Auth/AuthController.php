@@ -32,6 +32,7 @@ class AuthController extends Controller
       'name' => 'required|string|max:255',
       'email' => 'required|email|unique:users',
       'password' => 'required|confirmed|min:6',
+      'role' => 'required|in:donor,volunteer,organization',
     ]);
     // dd($request->all());
 

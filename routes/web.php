@@ -82,6 +82,12 @@ Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword']
 Route::patch('/admin/organizations/{id}/accept', [OrganizationController::class, 'accept'])->name('admin.organizations.accept');
 Route::patch('/admin/organizations/{id}/reject', [OrganizationController::class, 'reject'])->name('admin.organizations.reject');
 
+// Route::middleware(['auth'])->group(function () {
+//   Route::get('/organizations/create', [OrganizationController::class, 'create'])->name('organizations.create');
+//   Route::post('/organizations', [OrganizationController::class, 'store'])->name('organizations.store');
+// });
+
+
 Route::middleware(['auth'])->group(function () {
   Route::get('/organizations/create', [OrganizationController::class, 'create'])->name('organizations.create');
   Route::post('/organizations', [OrganizationController::class, 'store'])->name('organizations.store');

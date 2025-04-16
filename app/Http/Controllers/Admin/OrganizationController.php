@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Organization;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
@@ -21,28 +22,31 @@ class OrganizationController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('organizations.create');
-    }
+{
+    $categories = Category::all();
+    return view('organizations.create', compact('categories'));
+}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
-            'description' => 'required',
+            'description' => 'required|string',
+            'website' => 'nullable|url',
             'contact_email' => 'required|email',
-            'contact_phone' => 'required',
-            'status' => 'required|in:pending,approved,rejected',
+            'contact_phone' => 'required|string|max:20',
         ]);
-
-        Organization::create($request->all());
-
-        return redirect()->route('organizations.index')->with('success', 'Organization created!');
+    
+        $validated['user_id'] = auth()->id();
+        $validated['status'] = 'pending';
+    
+        Organization::create($validated);
+    
+        return redirect()->route('home')->with('success', 'Your request has been submitted and is waiting for admin approval.');
     }
 
     /**

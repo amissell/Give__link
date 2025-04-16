@@ -6,8 +6,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: Give__link_db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root_password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
     ports:
       - "3307:3306"
     volumes:

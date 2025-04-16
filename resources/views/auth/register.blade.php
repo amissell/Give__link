@@ -12,7 +12,16 @@
         <div class="mb-4">
             <label for="email" class="block text-gray-700">Email</label>
             <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-emerald-500" required>
-        </div>  
+        </div>
+        <div class="mb-4">
+            <label for="role" class="block text-sm font-medium text-gray-700">I am a:</label>
+            <select name="role" id="role" required class="mt-1 block w-full p-2 border rounded-md">
+                <option value="donor">Donor</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="organization">Non-profit Organization</option>
+            </select>
+        </div>
+
         <div class="mb-4">
             <label for="password" class="block text-gray-700">Password</label>
             <input type="password" id="password" name="password" class="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-emerald-500" required>

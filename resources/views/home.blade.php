@@ -2,6 +2,16 @@
 
 @section('content')
 
+@auth
+    <div class="text-right mb-6">
+        <a href="{{ route('organizations.create') }}"
+           class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">
+            Register Your Organization
+        </a>
+    </div>
+@endauth
+
+
 <!-- Hero Section -->
 <section id="hero" class="relative">
   <!-- Background with overlay -->
