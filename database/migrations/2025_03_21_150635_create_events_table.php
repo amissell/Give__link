@@ -24,6 +24,14 @@ return new class extends Migration
       $table->foreignId('ville_id')->nullable()->constrained('villes')->onDelete('set null');
       $table->timestamps();
     });
+
+    Schema::create('event_volunteer', function (Blueprint $table) {
+      $table->id();
+      $table->foreignId('event_id')->constrained()->onDelete('cascade');
+      $table->foreignId('user_id')->constrained()->onDelete('cascade');
+      $table->timestamps();
+    
+    });
   }
 
   /**
@@ -31,6 +39,7 @@ return new class extends Migration
    */
   public function down(): void
   {
+    Schema::dropIfExists('event_volunteer');
     Schema::dropIfExists('events');
   }
 };

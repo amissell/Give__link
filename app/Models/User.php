@@ -38,6 +38,16 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+
+
+
+     public function volunteeredEvents()
+     {
+      return $this->belongsToMany(Event::class, 'event_volunteer')
+      ->withPivot('skills', 'availability', 'status')
+      ->withTimestamps();
+    }
+
     protected function casts(): array
     {
         return [
@@ -46,17 +56,31 @@ class User extends Authenticatable
         ];
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_role');
+    }
+
+    /**
+     * Check if the user has a specific role.
+     */
+    public function hasRole($role)
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
+
     public function isAdmin()
     {
-      return $this->role === 'Admin';
+        return $this->hasRole('admin');
     }
 
     public function isOrganization()
     {
-      return $this->role === 'organization';
+        return $this->hasRole('organization');
     }
+
     public function isVolunteer()
     { 
-      return $this->role === 'volunteer';
+        return $this->hasRole('volunteer');
     }
 }
