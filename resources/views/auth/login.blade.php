@@ -35,5 +35,13 @@
     <div class="mt-4 text-center">
         <a href="{{ route('password.request') }}" class="text-sm text-emerald-600 hover:text-emerald-700">Forgot your password?</a>
     </div>
+    
+    
+    <div class="mt-2 text-center">
+        <span class="text-sm text-gray-600">Don't have an account?</span>
+        <a href="{{ route('register') }}" class="text-sm text-emerald-600 hover:text-emerald-700 font-medium">Register</a>
+    </div>
+
+    
 </div>
 @endsection

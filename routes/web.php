@@ -3,6 +3,7 @@
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrganizationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -18,6 +19,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function (
   Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
   Route::patch('/organizations/{id}/accept', [OrganizationController::class, 'accept'])->name('admin.organizations.accept');
   Route::patch('/organizations/{id}/reject', [OrganizationController::class, 'reject'])->name('admin.organizations.reject');
+  Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+  Route::get('/admin/users/{user}', [UserController::class,'show'])->name('admin.users.show');
+  Route::get('/admin/users/{id}/toggle-status', [UserController::class, 'toggleStatus'])->name('admin.users.toggleStatus');
 });
 
 // Public routes
@@ -37,7 +41,7 @@ Route::get('/organisations', function () {
 // Authentication routes
 Route::get('/login', [AuthController::class, 'showLoginForm']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/register', [AuthController::class, 'showRegisterForm']);
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register.form'); // GET route to display form
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -55,3 +59,6 @@ Route::get('/Donations', function () {
 Route::get('/Volnteers', function () {
     return view('Volunteers.index');
 })->name('Volunteers.index');
+
+
+

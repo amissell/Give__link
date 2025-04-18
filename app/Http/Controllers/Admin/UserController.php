@@ -1,32 +1,43 @@
 <?php
 
-// namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 
-// use Illuminate\Http\Request;
-// use App\Http\Controllers\Controller;
-// use Illuminate\Foundation\Auth\User;
+use App\Models\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-// class UserController extends Controller
-// {
-//   public function index()
-//     {
-//         $users = User::all();
-//         return view('users.index', compact('users'));
-//     }
+class UserController extends Controller
+{
+    public function index(Request $request)
+    {
+        $role = $request->get('role');
 
-//     public function edit(User $user)
-//     {
-//         return view('users.edit', compact('user'));
-//     }
+        // If a role is selected, filter by role
+        $users = User::when($role, function ($query) use ($role) {
+            $query->whereHas('roles', function ($q) use ($role) {
+                $q->where('name', $role);
+            });
+        })->get();
 
-//     public function update(Request $request, User $user)
-//     {
-//         $request->validate([
-//             'role' => 'required|in:admin,organization,donor,volunteer',
-//         ]);
+        return view('admin.users.index', compact('users', 'role'));
+    }
+    
+    
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.users.show', compact('user'));
+    }
+    
+    
+    public function toggleStatus($id)
+    {
+        $user = User::findOrFail($id);
+        $user->is_active = !$user->is_active;
+        $user->save();
+    
+        return redirect()->route('admin.users.index')->with('status', 'User status updated!');
+    }
+    
 
-//         $user->update(['role' => $request->role]);
-
-//         return redirect()->route('admin.users.index')->with('success', 'User role updated successfully!');
-//     }
-// }
+}
