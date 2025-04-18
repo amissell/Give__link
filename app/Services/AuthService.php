@@ -14,10 +14,7 @@ class AuthService
   protected $userRepository;
   protected $passwordResetRepository;
 
-  public function __construct(
-    UserRepositoryInterface $userRepository,
-    // PasswordResetRepositoryInterface $passwordResetRepository
-  ) {
+  public function __construct(UserRepositoryInterface $userRepository) {
     $this->userRepository = $userRepository;
     // $this->passwordResetRepository = $passwordResetRepository;
   }

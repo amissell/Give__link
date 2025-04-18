@@ -14,8 +14,7 @@
                 <span>Dashboard</span>
             </a>
 
-            @if (auth()->check() && auth()->user()->role === 'admin')
-                <a href="{{ route('organizations.index') }}"
+                <a href="#"
                     class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
                     <i class="fas fa-users"></i>
                     <span>Manage Organizations</span>
@@ -31,26 +30,6 @@
                     <i class="fas fa-user-cog"></i>
                     <span>Manage Users</span>
                 </a>
-            @endif
-
-
-            @if (auth()->check() && auth()->user()->role === 'organization')
-                <!-- Manage Events -->
-                <a href="{{ route('events.index') }}"
-                    class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>Manage Events</span>
-                </a>
-
-
-
-                <!-- Donation -->
-                <a href="{{ route('Donations.index') }}"
-                    class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
-                    <i class="fas fa-heart"></i>
-                    <span>Manage Donations</span>
-                </a>
-            @endif
 
 
             <!-- Reports (Optional) -->

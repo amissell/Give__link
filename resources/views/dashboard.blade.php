@@ -40,7 +40,7 @@
     <div class="flex justify-between items-center mb-4">
       <div>
         <p class="text-sm font-medium text-gray-500">Pending Donations</p>
-        <h3 class="text-2xl font-bold text-emerald-700"></h3>
+        <h3 class="text-2xl font-bold text-emerald-700">{</h3>
       </div>
       <div class="p-3 rounded-full bg-emerald-100 text-emerald-700">
         <i class="fas fa-dollar-sign"></i>
