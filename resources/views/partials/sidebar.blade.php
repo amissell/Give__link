@@ -14,7 +14,7 @@
                 <span>Dashboard</span>
             </a>
 
-                <a href="#"
+                <a href="{{ route ('organizations.manage') }}"
                     class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
                     <i class="fas fa-users"></i>
                     <span>Manage Organizations</span>

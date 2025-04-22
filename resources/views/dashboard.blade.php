@@ -8,6 +8,7 @@
 <!-- Stats Cards -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
   <!-- Pending Organizations -->
+   
   <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
     <div class="flex justify-between items-center mb-4">
       <div>
@@ -40,7 +41,7 @@
     <div class="flex justify-between items-center mb-4">
       <div>
         <p class="text-sm font-medium text-gray-500">Pending Donations</p>
-        <h3 class="text-2xl font-bold text-emerald-700">{</h3>
+        <h3 class="text-2xl font-bold text-emerald-700"></h3>
       </div>
       <div class="p-3 rounded-full bg-emerald-100 text-emerald-700">
         <i class="fas fa-dollar-sign"></i>

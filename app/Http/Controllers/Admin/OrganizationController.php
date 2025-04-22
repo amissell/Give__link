@@ -12,11 +12,14 @@ class OrganizationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+
+    public function adminIndex()
     {
-        $organizations = Organization::paginate(10);
-        return view('organizations.index', compact('organizations'));
+        $organizations = Organization::with('category')->get();
+        return view('organizations.manage', compact('organizations'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,29 +35,37 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        // Validate the input
+        $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'description' => 'required|string',
             'website' => 'nullable|url',
             'contact_email' => 'required|email',
-            'contact_phone' => 'required|string|max:20',
+            'contact_phone' => 'required|string',
         ]);
-    
-        $validated['user_id'] = auth()->id();
-        $validated['status'] = 'pending';
-    
-        Organization::create($validated);
-    
-        return redirect()->route('home')->with('success', 'Your request has been submitted and is waiting for admin approval.');
+
+        // Create the organization with a 'pending' status
+        Organization::create([
+            'user_id' => auth()->id(),  // Attach the current authenticated user
+            'name' => $request->name,
+            'category_id' => $request->category_id,
+            'description' => $request->description,
+            'website' => $request->website,
+            'contact_email' => $request->contact_email,
+            'contact_phone' => $request->contact_phone,
+            'status' => 'pending',  // Default status is 'pending'
+        ]);
+
+        return redirect()->route('organizations.thankyou')->with('success', 'Your organization has been submitted for review.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($organization)
+    public function show($id)
     {
-        $organization = Organization::findOrFail($organization);
+        $organization = Organization::findOrFail($id);
         return view('organizations.show', compact('organization'));
     }
     /**
@@ -69,21 +80,28 @@ class OrganizationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Organization $organization)
-    {
+    public function update(Request $request, $id)
+{
+    $organization = Organization::findOrFail($id);
+
+    // Ensure the user is an admin
+    if (auth()->user()->is_admin) {  // Assuming you have an 'is_admin' field in your User model
+        // Validate the status input (either 'approved' or 'rejected')
         $request->validate([
-            'name' => 'required|string|max:255',
-            'category_id' => 'required|exists:categories,id',
-            'description' => 'required',
-            'contact_email' => 'required|email',
-            'contact_phone' => 'required',
-            'status' => 'required|in:pending,approved,rejected',
+            'status' => 'required|in:approved,rejected',
         ]);
 
-        $organization->update($request->all());
+        // Update the organization status
+        $organization->update([
+            'status' => $request->status,
+        ]);
 
-        return redirect()->route('organizations.index')->with('success', 'Organization updated!');
+        return redirect()->route('admin.organizations.index')->with('success', 'Organization status updated.');
     }
+
+    return redirect()->route('home')->with('error', 'You are not authorized to perform this action.');
+}
+
 
     /**
      * Remove the specified resource from storage.
@@ -101,7 +119,7 @@ class OrganizationController extends Controller
         $organization->status = 'approved';
         $organization->save();
         
-        return redirect()->route('organizations.index')->with('success', 'Organization approved.');
+        return redirect()->route('organizations.manage')->with('success', 'Organization approved.');
     }
 
     public function reject($id)
@@ -110,7 +128,7 @@ class OrganizationController extends Controller
         $organization->status = 'rejected';
         $organization->save();
         
-        return redirect()->route('organizations.index')->with('success', 'Organization rejected.');
+        return redirect()->route('organizations.manage')->with('success', 'Organization approved.');
     }
 
 }

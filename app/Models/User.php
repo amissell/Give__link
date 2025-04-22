@@ -83,4 +83,11 @@ class User extends Authenticatable
     { 
         return $this->hasRole('volunteer');
     }
+
+    public function organization()
+    {
+        return $this->hasOne(Organization::class);
+    }
+    
+
 }

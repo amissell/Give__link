@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
+use App\Models\User;
 
 class Organization extends Model
 {
@@ -64,4 +67,14 @@ class Organization extends Model
     {
         return $this->status === 'rejected';
     }
+    
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function categories()
+{
+    return $this->belongsTo(Category::class);
+}
 }

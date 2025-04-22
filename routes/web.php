@@ -1,14 +1,14 @@
 <?php
 
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\OrganisateurController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrganizationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Admin\DashboardController;
-
+// use App\Http\Controllers\OrganizationDashboardController;
 
 Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -22,6 +22,11 @@ Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function (
   Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
   Route::get('/admin/users/{user}', [UserController::class,'show'])->name('admin.users.show');
   Route::get('/admin/users/{id}/toggle-status', [UserController::class, 'toggleStatus'])->name('admin.users.toggleStatus');
+
+  Route::get('organizations/manage', [OrganizationController::class, 'adminIndex'])->name('organizations.manage');
+  Route::patch('organizations/{id}', [OrganizationController::class, 'update'])->name('organizations.update');
+  Route::get('organizations/{id}', [OrganizationController::class, 'show'])->name('organizations.show');
+
 });
 
 // Public routes
@@ -60,5 +65,22 @@ Route::get('/Volnteers', function () {
     return view('Volunteers.index');
 })->name('Volunteers.index');
 
+Route::get('/organization/waiting', function () {
+    return view('organizations.waiting');
+})->name('organizations.waiting');
+
+Route::middleware(['auth', 'role:organization'])->group(function () {
+    Route::get('/organizations/create', [OrganizationController::class, 'create'])->name('organizations.create');
+    Route::post('/organizations', [OrganizationController::class, 'store'])->name('organizations.store');
+});
+
+
+Route::get('/organization/thank-you', function () {
+    return view('organizations.thankyou');
+})->name('organizations.thankyou');
+
+
+
+Route::get('/organizations/dashboard', [OrganisateurController::class, 'yahya']);
 
 
