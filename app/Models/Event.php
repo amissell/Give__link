@@ -11,7 +11,10 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'type', 'date', 'organization_id'];
+    protected $fillable = [
+        'title', 'description', 'startEventAt', 'endEventAt',
+        'capacity', 'type', 'organization_id', 'image', 'ville'
+    ];
 
     /**
      * Get the organization that owns the event.

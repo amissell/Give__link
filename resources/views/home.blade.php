@@ -4,7 +4,7 @@
 
 @auth
     <div class="text-right mb-6">
-        <a href="#"
+        <a href="{{ route('login') }}"
            class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 transition">
             Register Your Organization
         </a>

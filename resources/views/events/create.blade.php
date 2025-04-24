@@ -1,6 +1,6 @@
 @extends('layouts.organization-app')
 
-<h1 class="text-xl font-bold mb-4">Create New Event</h1>
+<h1 class="text-xl font-bold mb-4">Create New Event</h>
 
 @if ($errors->any())
     <div class="text-red-500 mb-4">
@@ -39,13 +39,21 @@
         <label for="capacity" class="block">Capacity</label>
         <input type="number" name="capacity" id="capacity" class="border rounded w-full p-2" required>
     </div>
+    <div>
+        <label for="ville">City (Ville)</label>
+        <input type="text" name="ville" id="ville" class="border rounded w-full" required>
+    </div>
+
+    <div>
+        <label for="image">Event Image</label>
+        <input type="file" name="image" id="image" class="w-full" accept="image/*">
+    </div>
 
     <div>
         <label for="type" class="block">Event Type</label>
         <select name="type" id="type" class="border rounded w-full p-2" required>
             <option value="volunteering">Volunteering</option>
             <option value="donation">Donation</option>
-            <option value="awareness">Awareness</option>
         </select>
     </div>
 

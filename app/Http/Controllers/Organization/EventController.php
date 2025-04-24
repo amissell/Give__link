@@ -27,8 +27,17 @@ class EventController extends Controller
             'endEventAt' => 'required|date|after:startEventAt',
             'capacity' => 'required|integer|min:1',
             'type' => 'required|in:volunteering,donation,awareness',
+            'ville' => 'required',
+            'image' => 'nullable|image|max:2048',
         ]);
-
+        
+        
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('events', 'public');
+        } else {
+            $imagePath = null;
+        }
+        
         $event = Event::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -36,8 +45,11 @@ class EventController extends Controller
             'endEventAt' => $request->endEventAt,
             'capacity' => $request->capacity,
             'type' => $request->type,
+            'ville' => $request->ville,
+            'image' => $imagePath,
             'organization_id' => auth()->user()->organization->id,
         ]);
+        
 
         return redirect()->route('events.show', $event->id)
             ->with('success', 'Event created successfully!');

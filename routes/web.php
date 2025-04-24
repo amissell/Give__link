@@ -92,6 +92,9 @@ Route::middleware(['auth', 'role:organization'])->group(function () {
      Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 });
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::post('/donation', [DonationController::class, 'store'])->name('donations.store');

@@ -17,7 +17,7 @@ return new class extends Migration
       $table->string('title');
       $table->text('description');
       $table->string('image')->nullable();
-      $table->enum('situation', ['completed', 'cancelled', 'in progress'])->default('in progress');
+      $table->enum('situation', allowed: ['completed', 'cancelled', 'in progress'])->default('in progress');
       $table->integer('capacity')->default(0);
       $table->dateTime('startEventAt')->nullable(false);
       $table->dateTime('endEventAt')->nullable(false);
