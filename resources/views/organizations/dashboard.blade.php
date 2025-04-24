@@ -8,15 +8,15 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Total Events -->
-        <div class="bg-white shadow rounded-lg p-6">
-            <h2 class="text-lg font-semibold">Total Events Created</h2>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <h2 class="text-lg font-semibold">Total Events Created</h2>
             <p class="text-4xl text-blue-600 font-bold mt-2"></p>
         </div>
 
         <!-- Total Volunteers -->
         <div class="bg-white shadow rounded-lg p-6">
-            <h2 class="text-lg font-semibold">Total Volunteers Registered</h2>
-            <p class="text-4xl text-green-600 font-bold mt-2"></p>
+            <h2 class="text-lg font-semibold text-gray-500">Total Volunteers Registered</h2>
+            <p class="text-4xl font-bold text-indigo-700 mt-2"></p>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
     <div class="mt-10">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-semibold">Manage Events</h2>
-            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create New Event</a>
+            <a href="{{ route('events.create') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700">Create New Event</a>
         </div>
         <div class="bg-white rounded shadow">
             <table class="min-w-full table-auto">
@@ -37,23 +37,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($events as $event)
                         <tr class="border-b">
-                            <td class="px-4 py-2">{{ $event->title }}</td>
-                            <td class="px-4 py-2">{{ $event->date }}</td>
-                            <td class="px-4 py-2">{{ $event->volunteers_count }}</td>
+                            <td class="px-4 py-2"></td>
+                            <td class="px-4 py-2"></td>
+                            <td class="px-4 py-2"></td>
                             <td class="px-4 py-2 space-x-2">
-                                <a href="{{ route('events.edit', $event->id) }}" class="text-blue-600 hover:underline">Edit</a>
-                                <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="inline">
+                                <a href="" class="text-blue-600 hover:underline">Edit</a>
+                                <form action="" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="text-red-600 hover:underline" onclick="return confirm('Are you sure?')">Delete</button>
                                 </form>
                             </td>
                         </tr>
-                    @empty
                         <tr><td colspan="4" class="text-center py-4 text-gray-500">No events found.</td></tr>
-                    @endforelse
                 </tbody>
             </table>
         </div>

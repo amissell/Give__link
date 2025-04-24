@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrganizationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Organization\EventController;
+use App\Http\Controllers\Organization\DonationController;
 
 Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -84,4 +85,14 @@ Route::middleware(['auth', 'role:organization'])->group(function () {
     Route::get('/organizations/dashboard', [OrganizationDashboardController::class, 'dashboard'])->name('organizations.dashboard');
 
     Route::resource('events', EventController::class);
+     Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
+     Route::post('/events', [EventController::class, 'store'])->name('events.store');
+     Route::get('/events/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
+     Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
+     Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
+});
+
+
+Route::middleware('auth')->group(function () {
+    Route::post('/donation', [DonationController::class, 'store'])->name('donations.store');
 });

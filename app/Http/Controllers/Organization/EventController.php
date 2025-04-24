@@ -1,64 +1,75 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Organization;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Event;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return redirect()->route('organizations.dashboard');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('events.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'startEventAt' => 'required|date',
+            'endEventAt' => 'required|date|after:startEventAt',
+            'capacity' => 'required|integer|min:1',
+            'type' => 'required|in:volunteering,donation,awareness',
+        ]);
+
+        $event = Event::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'startEventAt' => $request->startEventAt,
+            'endEventAt' => $request->endEventAt,
+            'capacity' => $request->capacity,
+            'type' => $request->type,
+            'organization_id' => auth()->user()->organization->id,
+        ]);
+
+        return redirect()->route('events.show', $event->id)
+            ->with('success', 'Event created successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Event $event)
     {
-        //
+        $this->authorize('update', $event);
+        return view('events.edit', compact('event'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, Event $event)
     {
-        //
+        $this->authorize('update', $event);
+
+        $validated = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'capacity' => 'required|integer',
+            'startEventAt' => 'required|date',
+            'endEventAt' => 'required|date|after:startEventAt',
+        ]);
+
+        $event->update($validated);
+
+        return redirect()->route('organizations.dashboard')->with('success', 'Event updated.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy(Event $event)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $this->authorize('delete', $event);
+        $event->delete();
+        return redirect()->route('organizations.dashboard')->with('success', 'Event deleted.');
     }
 }

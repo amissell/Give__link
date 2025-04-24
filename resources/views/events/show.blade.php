@@ -1,35 +1,52 @@
-@extends('layouts.app')
-
-@section('title', 'Event Details')
-
-@section('page-title', 'Event Details')
+@extends('layouts.organization-app')
 
 @section('content')
-<div class="p-6 bg-white shadow-md rounded-lg">
-  <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">{{ $event->name }}</h1>
+    <h1 class="text-2xl font-bold">{{ $event->title }}</h1>
+    <p class="text-gray-600">{{ $event->description }}</p>
+    <p><strong>Type:</strong> {{ $event->type }}</p>
+    <p><strong>Start:</strong> {{ $event->startEventAt }}</p>
+    <p><strong>End:</strong> {{ $event->endEventAt }}</p>
 
-  <div class="mb-6">
-    <h3 class="text-xl font-semibold text-gray-800">Event Information</h3>
-    <p class="text-gray-600"><strong>Organization:</strong> {{ $event->organization->name }}</p>
-    <p class="text-gray-600"><strong>Status:</strong> {{ ucfirst($event->status) }}</p>
-    <p class="text-gray-600"><strong>Date:</strong> {{ $event->event_date->format('F j, Y') }}</p>
-    <p class="text-gray-600"><strong>Location:</strong> {{ $event->location }}</p>
-    <p class="text-gray-600"><strong>Description:</strong> {{ $event->description }}</p>
-  </div>
+    @if ($event->type === 'donation')
+        <h2 class="text-xl font-semibold mt-6">Make a Donation</h2>
+        <form action="{{ route('donations.store') }}" method="POST" class="space-y-4">
+            @csrf
+            <input type="hidden" name="event_id" value="{{ $event->id }}">
 
-  <div class="flex justify-end">
-    <form action="{{ route('admin.events.accept', $event->id) }}" method="POST">
-      @csrf
-      <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
-        Accept
-      </button>
-    </form>
-    <form action="{{ route('admin.events.reject', $event->id) }}" method="POST" class="ml-4">
-      @csrf
-      <button type="submit" class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
-        Reject
-      </button>
-    </form>
-  </div>
-</div>
+            <div>
+                <label>Amount</label>
+                <input type="number" name="amount" required class="border rounded w-full">
+            </div>
+
+            <div>
+                <label>Currency</label>
+                <select name="currency" class="border rounded w-full">
+                    <option value="MAD">MAD</option>
+                    <option value="USD">USD</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Donor Name (optional)</label>
+                <input type="text" name="donor_name" class="border rounded w-full">
+            </div>
+
+            <div>
+                <label>Email (optional)</label>
+                <input type="email" name="email" class="border rounded w-full">
+            </div>
+
+            <div>
+                <label>Phone (optional)</label>
+                <input type="text" name="phone" class="border rounded w-full">
+            </div>
+
+            <div>
+                <label>Message</label>
+                <textarea name="message" class="border rounded w-full"></textarea>
+            </div>
+
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Donate</button>
+        </form>
+    @endif
 @endsection
