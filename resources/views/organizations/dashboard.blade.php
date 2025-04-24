@@ -2,21 +2,21 @@
 
 @section('content')
     <div class="mb-8">
-        <h1 class="text-3xl font-bold">Welcome, {{ auth()->user()->name }} 🎉</h1>
-        <p class="text-gray-600 mt-1">Status: <span class="text-green-600 font-semibold">Approved ✅</span></p>
+        <h1 class="text-3xl font-bold">Welcome, {{ auth()->user()->name }} </h1>
+        <p class="text-gray-600 mt-1">Status: <span class="text-green-600 font-semibold">Approved </span></p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Total Events -->
         <div class="bg-white shadow rounded-lg p-6">
             <h2 class="text-lg font-semibold">Total Events Created</h2>
-            <p class="text-4xl text-blue-600 font-bold mt-2">{{ $eventCount }}</p>
+            <p class="text-4xl text-blue-600 font-bold mt-2"></p>
         </div>
 
         <!-- Total Volunteers -->
         <div class="bg-white shadow rounded-lg p-6">
             <h2 class="text-lg font-semibold">Total Volunteers Registered</h2>
-            <p class="text-4xl text-green-600 font-bold mt-2">{{ $volunteerCount }}</p>
+            <p class="text-4xl text-green-600 font-bold mt-2"></p>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
     <div class="mt-10">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-semibold">Manage Events</h2>
-            <a href="{{ route('events.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create New Event</a>
+            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create New Event</a>
         </div>
         <div class="bg-white rounded shadow">
             <table class="min-w-full table-auto">

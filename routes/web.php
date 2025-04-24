@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\OrganisateurController;
+use App\Http\Controllers\Organization\OrganizationDashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrganizationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-// use App\Http\Controllers\OrganizationDashboardController;
+use App\Http\Controllers\Organization\EventController;
 
 Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -80,7 +80,8 @@ Route::get('/organization/thank-you', function () {
 })->name('organizations.thankyou');
 
 
+Route::middleware(['auth', 'role:organization'])->group(function () {
+    Route::get('/organizations/dashboard', [OrganizationDashboardController::class, 'dashboard'])->name('organizations.dashboard');
 
-Route::get('/organizations/dashboard', [OrganisateurController::class, 'yahya']);
-
-
+    Route::resource('events', EventController::class);
+});
