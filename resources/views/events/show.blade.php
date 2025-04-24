@@ -22,14 +22,13 @@
 
                     <div class="flex flex-row items-center mt-4 text-gray-700">
                         <div class="w-1/2">
-                            <strong>Ville:</strong> {{ $event->ville ? $event->ville->name : 'N' }}
+                            <strong>Ville:</strong> {{ $event->ville ? $event->ville->name : 'Not specified' }}
                         </div>
                         <div class="w-1/2 flex justify-end">
                             <img src="https://example.com/your-logo.png" alt="Logo" class="w-8">
                         </div>
                     </div>
 
-                    <!-- Action Buttons (if needed) -->
                     <div class="mt-6 flex space-x-4">
                         <a href="{{ route('events.edit', $event->id) }}" class="text-white bg-blue-600 hover:bg-blue-700 rounded-md py-2 px-4">Edit Event</a>
                         <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="inline">
@@ -37,6 +36,11 @@
                             @method('DELETE')
                             <button type="submit" class="text-white bg-red-600 hover:bg-red-700 rounded-md py-2 px-4">Delete Event</button>
                         </form>
+
+                        <a href="{{ route('organizations.dashboard') }}" class="text-white bg-green-600 hover:bg-green-700 rounded-md py-2 px-4">
+                            Go to Dashboard
+                        </a>
+
                     </div>
                 </div>
             </div>

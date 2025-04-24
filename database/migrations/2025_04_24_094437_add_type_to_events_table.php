@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             $table->enum('type', ['volunteering', 'donation'])->default('volunteering');
-
         });
     }
 
@@ -23,7 +22,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->dropColumn('type');
+            if (Schema::hasColumn('events', 'type')) {
+                $table->dropColumn('type');
+            }
         });
     }
 };

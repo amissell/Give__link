@@ -16,7 +16,7 @@
 <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
     @csrf
 
-    <div>
+    <div>   
         <label for="title" class="block">Title</label>
         <input type="text" name="title" id="title" class="border rounded w-full p-2" value="{{ old('title') }}" required>
     </div>
@@ -41,17 +41,21 @@
         <input type="number" name="capacity" id="capacity" class="border rounded w-full p-2" value="{{ old('capacity') }}" required>
     </div>
 
-    <div>
-        <label for="ville" class="block">Ville</label>
-        <select name="ville" id="ville" class="border rounded w-full p-2" required>
-            <option value="">-- Choisir une ville --</option>
-            @foreach($villes as $ville)
-                <option value="{{ $ville->name }}" {{ old('ville') == $ville->name ? 'selected' : '' }}>
-                    {{ $ville->name }}
-                </option>
-            @endforeach
-        </select>
-    </div>
+    <div class="mb-4">
+    <label for="ville_id" class="block text-sm font-medium text-gray-700">Ville</label>
+    <select name="ville_id" id="ville_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+        <option value="">-- Select Ville --</option>
+        @foreach($villes as $ville)
+            <option value="{{ $ville->id }}" {{ old('ville_id') == $ville->id ? 'selected' : '' }}>
+                {{ $ville->name }}
+            </option>
+        @endforeach
+    </select>
+    @error('ville_id')
+        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+    @enderror
+</div>
+
 
     <div>
         <label for="image" class="block">Event Image</label>
