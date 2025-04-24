@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\User;
+use App\Models\ville;
 
 
 class Event extends Model
@@ -40,4 +41,10 @@ class Event extends Model
     {
         return $this->hasMany(Donation::class);
     }
+    
+    public function ville()
+    {
+        return $this->belongsTo(Ville::class);
+    }
+
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Organization;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
-
+use App\Models\ville;
 class EventController extends Controller
 {
     public function index()
@@ -15,7 +15,9 @@ class EventController extends Controller
 
     public function create()
     {
-        return view('events.create');
+        
+        $villes = Ville::orderBy('name')->get();
+        return view('events.create', data: compact('villes')); 
     }
 
     public function store(Request $request)
@@ -27,7 +29,7 @@ class EventController extends Controller
             'endEventAt' => 'required|date|after:startEventAt',
             'capacity' => 'required|integer|min:1',
             'type' => 'required|in:volunteering,donation,awareness',
-            'ville' => 'required',
+            'ville_id' => 'required',
             'image' => 'nullable|image|max:2048',
         ]);
         
@@ -53,13 +55,17 @@ class EventController extends Controller
 
         return redirect()->route('events.show', $event->id)
             ->with('success', 'Event created successfully!');
+            
     }
+
 
     public function edit(Event $event)
     {
         $this->authorize('update', $event);
-        return view('events.edit', compact('event'));
+        $villes = Ville::orderBy('name')->get();
+        return view('events.edit', compact('event', 'villes'));
     }
+
 
     public function update(Request $request, Event $event)
     {
@@ -84,4 +90,14 @@ class EventController extends Controller
         $event->delete();
         return redirect()->route('organizations.dashboard')->with('success', 'Event deleted.');
     }
+
+
+    public function show($id)
+{
+    $event = Event::findOrFail($id);
+    // dd($event->ville);
+
+    return view('events.show', compact('event'));
+}
+
 }
