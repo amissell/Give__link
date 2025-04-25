@@ -19,5 +19,14 @@ class OrganizationDashboardController extends Controller
         // $events = Event::where('organization_id', $organization->id)->withCount('volunteers')->get();
         return view('organizations.dashboard');
     }
+    
+    
+    public function index()
+    {
+        $organization = auth()->user()->organization;
+        $events = $organization->events;
+        return view('organizations.dashboard', compact('events'));
+    }
+
 
 }

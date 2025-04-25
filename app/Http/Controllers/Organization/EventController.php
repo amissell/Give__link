@@ -35,8 +35,6 @@ class EventController extends Controller
     ]);
     
     $imagePath = $request->file('image')->store('events', 'public');
-    // dd($imagePath);
-    // $event->image = $imagePath;
     
 
     $event = Event::create([
@@ -91,10 +89,16 @@ class EventController extends Controller
 
 
     public function show($id)
-{
-    $event = Event::findOrFail($id);
-    // dd($event);
-    return view('events.show', compact('event'));
-}
+    {
+        $event = Event::findOrFail($id);
+        return view('events.show', compact('event'));
+    }
+
+    public function organizationEvents()
+    {
+        $events = Event::where('organization_id', auth()->user()->organization->id)->get();
+        return view('events.organizationEvents', compact('events'));
+    }
+
 
 }

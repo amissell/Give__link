@@ -91,6 +91,8 @@ Route::middleware(['auth', 'role:organization'])->group(function () {
      Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
      Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
      Route::get('events/{event}', [EventController::class, 'show'])->name('events.show');
+     Route::get('/events', [EventController::class, 'organizationEvents'])->name('events.organizationEvents');
+
 });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

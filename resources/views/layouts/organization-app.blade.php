@@ -18,6 +18,8 @@
         <div class="flex items-center space-x-4">
           <a href="{{ route('organizations.dashboard') }}" class="text-sm hover:underline">Dashboard</a>
           <a href="{{ route('events.create') }}" class="text-sm hover:underline">Create Event</a>
+          <a href="{{ route('events.organizationEvents') }}" class="text-sm hover:underline">All Events</a>
+
           <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button class="text-sm text-red-500 hover:underline">Logout</button>

@@ -7,20 +7,17 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Total Events -->
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
         <h2 class="text-lg font-semibold">Total Events Created</h2>
             <p class="text-4xl text-blue-600 font-bold mt-2"></p>
         </div>
 
-        <!-- Total Volunteers -->
         <div class="bg-white shadow rounded-lg p-6">
             <h2 class="text-lg font-semibold text-gray-500">Total Volunteers Registered</h2>
             <p class="text-4xl font-bold text-indigo-700 mt-2"></p>
         </div>
     </div>
 
-    <!-- Manage Events -->
     <div class="mt-10">
         <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl font-semibold">Manage Events</h2>

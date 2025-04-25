@@ -1,5 +1,3 @@
-
-
 @extends('layouts.organization-app')
 
 @section('content')
