@@ -14,10 +14,10 @@
     <div class="flex-1 overflow-auto">
       <!-- Header -->
       <nav class="bg-white shadow px-6 py-4 flex justify-between items-center">
-        <a href="#" class="text-xl font-bold text-green-500">GiveLink/a>
+        <a href="{{ route('organizations.dashboard') }}" class="text-xl font-bold text-green-500">GiveLink/a>
         <div class="flex items-center space-x-4">
-          <a href="#" class="text-sm hover:underline">Dashboard</a>
-          <a href="#" class="text-sm hover:underline">Create Event</a>
+          <a href="{{ route('organizations.dashboard') }}" class="text-sm hover:underline">Dashboard</a>
+          <a href="{{ route('events.create') }}" class="text-sm hover:underline">Create Event</a>
           <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button class="text-sm text-red-500 hover:underline">Logout</button>

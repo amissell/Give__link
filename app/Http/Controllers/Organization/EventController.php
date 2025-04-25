@@ -23,7 +23,6 @@ class EventController extends Controller
 
     public function store(Request $request)
 {
-    // ✅ 1. Validate input
     $request->validate([
         'title' => 'required',
         'description' => 'required',
@@ -32,16 +31,14 @@ class EventController extends Controller
         'capacity' => 'required|integer|min:1',
         'type' => 'required|in:volunteering,donation,awareness',
         'ville_id' => 'required|exists:villes,id',
-        'image' => 'nullable|image|max:2048',
+        'image' => 'nullable|image',
     ]);
+    
+    $imagePath = $request->file('image')->store('events', 'public');
+    // dd($imagePath);
+    // $event->image = $imagePath;
+    
 
-    // ✅ 2. Prepare image upload (if there is one)
-    $imagePath = null; // initialize empty
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('events', 'public'); // returns something like 'events/photo.jpg'
-    }
-
-    // ✅ 3. Create the event
     $event = Event::create([
         'title' => $request->title,
         'description' => $request->description,
@@ -50,11 +47,10 @@ class EventController extends Controller
         'capacity' => $request->capacity,
         'type' => $request->type,
         'ville_id' => $request->ville_id,
-        'image' => $imagePath, // may be null if no image was uploaded
+        'image' => $imagePath, 
         'organization_id' => auth()->user()->organization->id,
     ]);
 
-    // ✅ 4. Redirect to show page
     return redirect()->route('events.show', $event->id)
         ->with('success', 'Event created successfully!');
 }
@@ -97,8 +93,7 @@ class EventController extends Controller
     public function show($id)
 {
     $event = Event::findOrFail($id);
-    // dd($event->ville);
-
+    // dd($event);
     return view('events.show', compact('event'));
 }
 
