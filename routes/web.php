@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\OrganizationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Organization\EventController;
 use App\Http\Controllers\Organization\DonationController;
+use App\Http\Controllers\VolunteerController;
 
 Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -97,6 +98,11 @@ Route::middleware(['auth', 'role:organization'])->group(function () {
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Route::middleware(['auth', 'role:volunteer'])->group(function () {
+    Route::get('/my-events', [VolunteerController::class, 'myEvents'])->name('Volunteers.events');
+    Route::post('/my-events/{event}/cancel', [VolunteerController::class, 'cancelEvent'])->name('volunteer.events.cancel');
+});
 
 
 Route::middleware('auth')->group(function () {

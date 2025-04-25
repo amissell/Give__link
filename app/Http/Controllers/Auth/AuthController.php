@@ -22,7 +22,7 @@ class AuthController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register'); // Return the view to show the registration form
+        return view('auth.register'); 
     }
 
 
@@ -40,26 +40,20 @@ class AuthController extends Controller
         return redirect()->route('login')->withErrors(['Your account is suspended.']);
     }
 
-    // Admin, donor, volunteer - redirect as usual
     if ($user->hasRole('admin')) {
         return redirect()->route('dashboard');
-    } elseif ($user->hasRole('donor')) {
-        return redirect()->route('donor');
     } elseif ($user->hasRole('volunteer')) {
-        return redirect()->route('volunteer');
+        return redirect()->route('Volunteers.events');
     }
 
-    // ✅ Now handle ORGANIZATION
     if ($user->hasRole('organization')) {
-        $organization = $user->organization; // Relationship: User hasOne Organization
+        $organization = $user->organization; 
 
         if (!$organization) {
-            // ✅ They haven’t filled the form yet
             return redirect()->route('organizations.create');
         }
 
         if ($organization->status === 'rejected') {
-            // ❌ Rejected: log out and show message
             auth()->logout();
             return redirect()->route('login')->withErrors([
                 'email' => 'Your organization request was rejected by the admin.'
@@ -67,12 +61,10 @@ class AuthController extends Controller
         }
 
         if ($organization->status === 'pending') {
-            // ⏳ Still waiting approval
             return redirect()->route('organizations.waiting');
         }
 
         if ($organization->status === 'approved') {
-            // ✅ All good! Go to dashboard or wherever
             return redirect()->route('organizations.dashboard');
         }
     }
@@ -100,14 +92,12 @@ class AuthController extends Controller
 
         $user = $this->authService->register($validated);
 
-        // Log in the user after successful registration
         auth()->login($user);
 
-        // Redirect based on the user role
         if ($user->hasRole('admin')) {
             return redirect()->route('dashboard');
-        } elseif ($user->hasRole('donor')) {
-            return redirect()->route('donor.dashboard');
+        } elseif ($user->hasRole('volunteer')) {
+            return redirect()->route('login');
         } elseif ($user->hasRole('organization')) {
             return redirect()->route('login')->with('success', 'Registered successfully. Please login to complete your profile.');
         }

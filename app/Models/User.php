@@ -41,12 +41,12 @@ class User extends Authenticatable
 
 
 
-     public function volunteeredEvents()
-     {
-      return $this->belongsToMany(Event::class, 'event_volunteer')
-      ->withPivot('skills', 'availability', 'status')
-      ->withTimestamps();
-    }
+    //  public function volunteeredEvents()
+    //  {
+    //   return $this->belongsToMany(Event::class, 'event_volunteer')
+    //   ->withPivot('skills', 'availability', 'status')
+    //   ->withTimestamps();
+    // }
 
     protected function casts(): array
     {
@@ -88,6 +88,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Organization::class);
     }
-    
 
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'event_volunteer');
+    }
 }

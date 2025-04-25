@@ -16,7 +16,6 @@
             <div class="mb-4">
                 <label for="role" class="block text-sm font-medium text-gray-700">I am a:</label>
                 <select name="role" id="role" required class="mt-1 block w-full p-2 border rounded-md">
-                    <option value="donor">Donor</option>
                     <option value="volunteer">Volunteer</option>
                     <option value="organization">Non-profit Organization</option>
                 </select>
