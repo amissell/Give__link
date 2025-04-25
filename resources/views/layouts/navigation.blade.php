@@ -3,10 +3,10 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('home') }}" class="font-bold text-xl text-indigo-700">
-                        GiveLink
-                    </a>
+
+                <div class="flex items-center space-x-2 mb-8">
+                    <i class="fas fa-hand-holding-heart text-2xl"></i>
+                    <span class="text-2xl font-bold">GiveLink</span>
                 </div>
 
                 <!-- Navigation Links -->

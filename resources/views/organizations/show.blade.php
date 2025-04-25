@@ -40,7 +40,7 @@
 
     <div class="mt-6">
         <a href="{{ route('organizations.manage') }}" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
-            Back to Organizations
+            Back
         </a>
     </div>
 </div>

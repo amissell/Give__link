@@ -15,9 +15,6 @@
 
       <!-- Main Content -->
       <div class="flex-1 overflow-auto">
-        <!-- Header -->
-        @include('partials.header')
-
         <div class="p-6">
           @yield('content')
         </div>

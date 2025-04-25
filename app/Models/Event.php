@@ -30,7 +30,6 @@ class Event extends Model
      */
     public function volunteers()
     {
-        dd('hdjs');
         return $this->belongsToMany(User::class, 'event_volunteer');
     }
 

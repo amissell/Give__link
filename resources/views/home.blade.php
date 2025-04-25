@@ -24,7 +24,7 @@
       <p class="text-xl md:text-2xl text-green-500 mb-8 leading-relaxed">Connecting passionate people with causes that matter. Make a meaningful difference in communities across the globe.</p>
       
       <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-        <a href="#" class="bg-white text-[#10B981] px-8 py-4 rounded-full text-lg font-semibold hover:bg-teal-50 transition shadow-lg">
+        <a href="{{ route('register') }}" class="bg-white text-[#10B981] px-8 py-4 rounded-full text-lg font-semibold hover:bg-teal-50 transition shadow-lg">
           Get Started
         </a>
         <a href="#how-it-works" class="border-2 border-white text-green-500 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:bg-opacity-10 transition">
@@ -105,102 +105,6 @@
   </div>
 </section>
 
-<!-- Featured Causes Section -->
-<section id="causes" class="py-20 px-6 bg-gray-50">
-  <div class="container mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Featured Causes</h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Support these verified causes making a real difference in communities.</p>
-    </div>
-    
-    <div class="grid gap-8 grid-cols-1 md:grid-cols-3">
-      <!-- Cause 1 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
-        <div class="h-48 overflow-hidden relative">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <img src="/api/placeholder/600/400" alt="Education" class="w-full h-full object-cover">
-          <div class="absolute bottom-4 left-4">
-            <span class="bg-[#10B981] text-green-500 text-xs font-bold px-3 py-1 rounded-full">Education</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 text-gray-800">Education for All</h3>
-          <p class="text-gray-600 mb-4">Providing educational opportunities for children in underserved communities around the world.</p>
-          
-          <!-- Progress bar -->
-          <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
-            <div class="bg-[#10B981] h-2.5 rounded-full" style="width: 65%"></div>
-          </div>
-          <div class="flex justify-between text-sm text-gray-600 mb-4">
-            <span>$32,500 raised</span>
-            <span>$50,000 goal</span>
-          </div>
-          
-          <a href="#" class="mt-2 inline-block text-[#10B981] font-medium hover:underline">Learn more →</a>
-        </div>
-      </div>
-      
-      <!-- Cause 2 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
-        <div class="h-48 overflow-hidden relative">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <img src="/api/placeholder/600/400" alt="Clean Water" class="w-full h-full object-cover">
-          <div class="absolute bottom-4 left-4">
-            <span class="bg-blue-500 text-green-500 text-xs font-bold px-3 py-1 rounded-full">Clean Water</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 text-gray-800">Clean Water Initiative</h3>
-          <p class="text-gray-600 mb-4">Building sustainable water systems in rural areas to provide clean drinking water.</p>
-          
-          <!-- Progress bar -->
-          <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
-            <div class="bg-blue-500 h-2.5 rounded-full" style="width: 78%"></div>
-          </div>
-          <div class="flex justify-between text-sm text-gray-600 mb-4">
-            <span>$39,000 raised</span>
-            <span>$50,000 goal</span>
-          </div>
-          
-          <a href="#" class="mt-2 inline-block text-blue-500 font-medium hover:underline">Learn more →</a>
-        </div>
-      </div>
-      
-      <!-- Cause 3 -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
-        <div class="h-48 overflow-hidden relative">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-          <img src="/api/placeholder/600/400" alt="Hunger Relief" class="w-full h-full object-cover">
-          <div class="absolute bottom-4 left-4">
-            <span class="bg-orange-500 text-green-500 text-xs font-bold px-3 py-1 rounded-full">Hunger Relief</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 text-gray-800">Fighting Hunger</h3>
-          <p class="text-gray-600 mb-4">Providing nutritious meals and sustainable food solutions to combat hunger.</p>
-          
-          <!-- Progress bar -->
-          <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
-            <div class="bg-orange-500 h-2.5 rounded-full" style="width: 42%"></div>
-          </div>
-          <div class="flex justify-between text-sm text-gray-600 mb-4">
-            <span>$21,000 raised</span>
-            <span>$50,000 goal</span>
-          </div>
-          
-          <a href="#" class="mt-2 inline-block text-orange-500 font-medium hover:underline">Learn more →</a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="text-center mt-12">
-      <a href="#" class="inline-block bg-[#10B981] text-green-500 px-8 py-3 rounded-lg font-semibold hover:bg-[#0EA472] transition shadow-md">
-        View All Causes
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- Impact Stats Section -->
 <section class="py-20 bg-[#10B981] text-green-500">
   <div class="container mx-auto px-6">
@@ -233,7 +137,6 @@
   </div>
 </section>
 
-<!-- Events Section -->
 <section id="events" class="py-20 px-6 bg-white">
   <div class="container mx-auto">
     <div class="text-center mb-16">
@@ -241,53 +144,25 @@
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">Join us at these upcoming events to make an impact and connect with others.</p>
     </div>
     
-    <div class="grid gap-8 grid-cols-1 lg:grid-cols-2">
-      <!-- Event 1 -->
-      <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden">
-        <div class="md:w-1/3 relative">
-          <img src="/api/placeholder/400/300" alt="Charity Walk" class="h-full w-full object-cover">
-          <div class="absolute top-4 left-4 bg-[#10B981] text-green-500 text-sm font-bold px-4 py-2 rounded-lg">
-            <span>MAY</span>
-            <span class="text-xl block">15</span>
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-3">
+      @foreach($events as $event)
+        <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
+          <div class="h-48 overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+            <img src="{{ $event->image_url }}" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 text-gray-800">{{ $event->title }}</h3>
+            <p class="text-gray-600 mb-4">{{ $event->description }}</p>
+            
+            <!-- Date and Location -->
+            <p class="text-sm text-gray-600 mb-2"><strong>Date:</strong> {{ \Carbon\Carbon::parse($event->startEventAt)->format('F j, Y') }}</p>
+            <p class="text-sm text-gray-600 mb-4"><strong>Location:</strong> {{ $event->ville->name }}</p>
+
+            <a href="#" class="mt-2 inline-block text-[#10B981] font-medium hover:underline">Learn more →</a>
           </div>
         </div>
-        <div class="md:w-2/3 p-6">
-          <h3 class="text-xl font-bold mb-2 text-gray-800">Charity Walk 2025</h3>
-          <div class="flex items-center mb-3 text-gray-600">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            </svg>
-            <span>Central Park, New York City</span>
-          </div>
-          <p class="text-gray-600 mb-4">Join us for our annual charity walk to raise funds and awareness for education in underserved communities.</p>
-          <a href="#" class="inline-block text-[#10B981] font-medium hover:underline">View details →</a>
-        </div>
-      </div>
-      
-      <!-- Event 2 -->
-      <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden">
-        <div class="md:w-1/3 relative">
-          <img src="/api/placeholder/400/300" alt="Fundraising Gala" class="h-full w-full object-cover">
-          <div class="absolute top-4 left-4 bg-[#10B981] text-green-500 text-sm font-bold px-4 py-2 rounded-lg">
-            <span>JUN</span>
-            <span class="text-xl block">22</span>
-          </div>
-        </div>
-        <div class="md:w-2/3 p-6">
-          <h3 class="text-xl font-bold mb-2 text-gray-800">Annual Fundraising Gala</h3>
-          <div class="flex items-center mb-3 text-gray-600">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            </svg>
-            <span>Grand Hotel, San Francisco</span>
-          </div>
-          <p class="text-gray-600 mb-4">An elegant evening celebrating our achievements and raising funds for future initiatives.</p>
-          <a href="#" class="inline-block text-[#10B981] font-medium hover:underline">View details →</a>
-        </div>
-      </div>
-    </div>
+      @endforeach
     
     <div class="text-center mt-12">
       <a href="#" class="inline-block bg-[#10B981] text-green-500 px-8 py-3 rounded-lg font-semibold hover:bg-[#0EA472] transition shadow-md">
@@ -296,6 +171,9 @@
     </div>
   </div>
 </section>
+
+
+
 <!-- Organizations Section -->
 <section id="organizations" class="py-20 px-6 bg-gray-50">
   <div class="container mx-auto">

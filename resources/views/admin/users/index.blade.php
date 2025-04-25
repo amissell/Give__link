@@ -8,9 +8,9 @@
         <label for="role" class="mr-2 text-lg">Filter by role:</label>
         <select name="role" onchange="this.form.submit()" class="border border-gray-300 px-3 py-2 rounded-lg">
             <option value="">All</option>
-            <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin</option>
-            <option value="organization" {{ request('role') == 'organization' ? 'selected' : '' }}>Organization</option>
-            <option value="volunteer" {{ request('role') == 'volunteer' ? 'selected' : '' }}>Volunteer</option>
+            <option value="admin" {{ request('role') == 'admin'}}>Admin</option>
+            <option value="organization" {{ request('role') == 'organization' }}>Organization</option>
+            <option value="volunteer" {{ request('role') == 'volunteer'}}>Volunteer</option>
         </select>
     </form>
 

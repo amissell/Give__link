@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="max-w-7xl mx-auto mt-8 p-6">
-        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">My Organization's Events</h1>
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">My Event's</h1>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @foreach($events as $event)
@@ -12,7 +12,6 @@
                     <div class="h-48 bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $event->image) }}');"></div>
 
                     <div class="p-4">
-                        <!-- Event Date -->
                         <div class="flex justify-between text-gray-600">
                             <div>{{ \Carbon\Carbon::parse($event->startEventAt)->format('M d, Y') }}</div>
                             <div>{{ \Carbon\Carbon::parse($event->startEventAt)->format('h:i A') }}</div>

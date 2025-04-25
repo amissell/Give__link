@@ -12,9 +12,12 @@
   <div class="flex h-screen overflow-hidden">
     <!-- Main Content -->
     <div class="flex-1 overflow-auto">
-      <!-- Header -->
-      <nav class="bg-white shadow px-6 py-4 flex justify-between items-center">
-        <a href="{{ route('organizations.dashboard') }}" class="text-xl font-bold text-green-500">GiveLink/a>
+
+    <nav class="bg-white shadow px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2 mb-8"> <link href ="{{ route('organizations.dashboard') }}">
+            <i class="fas fa-hand-holding-heart text-2xl"></i>
+            <span class="text-2xl font-bold">GiveLink</span>
+        </div>
         <div class="flex items-center space-x-4">
           <a href="{{ route('organizations.dashboard') }}" class="text-sm hover:underline">Dashboard</a>
           <a href="{{ route('events.create') }}" class="text-sm hover:underline">Create Event</a>

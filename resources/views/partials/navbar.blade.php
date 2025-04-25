@@ -2,12 +2,10 @@
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     <a href="#hero" class="text-2xl font-bold text-green-500 flex items-center space-x-2">
       <!-- Simple logo shape -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
-        <path d="M12 8v8"></path>
-        <path d="M8 12h8"></path>
-      </svg>
-      <span>GiveLink</span>
+      <div class="flex items-center space-x-2 mb-8">
+            <i class="fas fa-hand-holding-heart text-2xl"></i>
+            <span class="text-2xl font-bold">GiveLink</span>
+        </div>
     </a>
 
     <!-- Mobile toggle button -->
@@ -19,7 +17,7 @@
 
     <!-- Navbar links (desktop) -->
     <div id="nav-content" class="hidden md:flex md:items-center md:space-x-6 font-medium text-green-500">
-      <a href="#causes" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Causes</a>
+      <!-- <a href="#causes" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Causes</a> -->
       <a href="#events" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Events</a>
       <a href="#organizations" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Organizations</a>
       <a href="#about" class="hover:text-green-100 transition-colors duration-200 relative nav-link">About</a>
