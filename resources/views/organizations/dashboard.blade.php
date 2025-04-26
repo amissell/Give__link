@@ -27,7 +27,6 @@
         </div>
     </div>
     
-    <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <!-- Total Events -->
         <div class="dashboard-card bg-white rounded-xl shadow-sm border border-gray-100 p-6 reveal-item delay-100">
