@@ -5,9 +5,8 @@
     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
         <div>
             <h1 class="text-3xl font-bold text-gray-800">
-                Create <span class="gradient-text">New Event</span>
+                Create <span class="gradient-text">Event</span>
             </h1>
-            <p class="text-gray-600 mt-2">Fill out the form below to create a new volunteer event</p>
         </div>
     </div>
 </div>
@@ -30,7 +29,7 @@
     </div>
 @endif
 
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 reveal-item delay-100">
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 reveal-item delay-100 max-h-[80vh] overflow-y-auto">
     <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
 

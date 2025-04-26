@@ -3,11 +3,11 @@
 
 @section('content')
     <!-- Welcome Section -->
-    <div class="mb-8 reveal-item">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+    <div class="mb-8 reveal-item overflow-y-auto">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between ">
             <div>
                 <h1 class="text-3xl font-bold text-gray-800">
-                    Welcome, {{ auth()->user()->name }}<span class="gradient-text"></span>
+                    Welcome,<span class="gradient-text"> {{ Auth::user()->name ?? 'organizations' }}</span>
                 </h1>
                 <div class="flex items-center mt-2">
                     <p class="text-gray-600">Status:</p>
