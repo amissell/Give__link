@@ -182,63 +182,37 @@
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">These trusted organizations are making real impact in communities worldwide.</p>
     </div>
 
-    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Organization cards -->
-      <div class="bg-white rounded-xl shadow-md p-6 flex items-center space-x-4">
-        <div class="flex-shrink-0">
-          <div class="w-16 h-16 rounded-full bg-[#10B981] bg-opacity-10 flex items-center justify-center">
-            <svg class="w-8 h-8 text-[#10B981]" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-gray-800">Hearts Without Borders</h3>
-          <p class="text-gray-600">International humanitarian aid organization</p>
-        </div>
-      </div>
+    @php
+    $categoryIcons = [
+        'Health' => ['icon' => 'heart-pulse', 'color' => 'text-red-500', 'bg' => 'bg-red-100'],
+        'Education' => ['icon' => 'graduation-cap', 'color' => 'text-blue-600', 'bg' => 'bg-blue-100'],
+        'Environment' => ['icon' => 'leaf', 'color' => 'text-green-600', 'bg' => 'bg-green-100'],
+        'Community' => ['icon' => 'users', 'color' => 'text-purple-600', 'bg' => 'bg-purple-100'],
+    ];
+@endphp
 
-      <div class="bg-white rounded-xl shadow-md p-6 flex items-center space-x-4">
-        <div class="flex-shrink-0">
-          <div class="w-16 h-16 rounded-full bg-blue-500 bg-opacity-10 flex items-center justify-center">
-            <svg class="w-8 h-8 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"></path>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-gray-800">Blue Sky Foundation</h3>
-          <p class="text-gray-600">Environmental conservation and education</p>
-        </div>
-      </div>
 
-      <div class="bg-white rounded-xl shadow-md p-6 flex items-center space-x-4">
-        <div class="flex-shrink-0">
-          <div class="w-16 h-16 rounded-full bg-purple-500 bg-opacity-10 flex items-center justify-center">
-            <svg class="w-8 h-8 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
-            </svg>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-gray-800">Learning Bridge</h3>
-          <p class="text-gray-600">Educational opportunities for youth</p>
-        </div>
-      </div>
 
-      <div class="bg-white rounded-xl shadow-md p-6 flex items-center space-x-4">
-        <div class="flex-shrink-0">
-          <div class="w-16 h-16 rounded-full bg-orange-500 bg-opacity-10 flex items-center justify-center">
-            <svg class="w-8 h-8 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.95 11H13v2a3 3 0 00-2.995 2.824l-.415.103A3.001 3.001 0 0111 17a3 3 0 11-3-3 3 3 0 013-3zm0-6h.05a3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 013 3h.05z"></path>
-            </svg>
+<div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      @foreach($organizations as $org)
+        @php
+            $categoryName = $org->category->name;
+            $iconData = $categoryIcons[$categoryName] ?? ['icon' => 'building', 'color' => 'text-gray-400', 'bg' => 'bg-gray-200'];
+        @endphp
+
+        <div class="bg-white rounded-xl shadow-md p-6 flex items-center space-x-4">
+          <div class="flex-shrink-0">
+          <div class="w-16 h-16 rounded-full {{ $iconData['bg'] }} flex items-center justify-center">
+            <i data-lucide="{{ $iconData['icon'] }}" class="w-8 h-8 {{ $iconData['color'] }}"></i>
+          </div>
+
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-800">{{ $org->name }}</h3>
+            <p class="text-gray-600">{{ $org->description }}</p>
           </div>
         </div>
-        <div>
-          <h3 class="text-lg font-bold text-gray-800">Health First</h3>
-          <p class="text-gray-600">Providing healthcare services to underserved communities</p>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
 </section>
