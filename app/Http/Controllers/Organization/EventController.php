@@ -100,6 +100,16 @@ class EventController extends Controller
         return view('events.organizationEvents', compact('events'));
     }
 
+    public function viewAllEventHomePage()
+    {
+        $events = Event::orderBy('startEventAt', 'asc')->paginate(12);
+        return view('events.viewAllEventHomePage', compact('events'));
+    }
+
+
+
+    
+
 
     
 

@@ -96,6 +96,8 @@ Route::middleware(['auth', 'role:organization'])->group(function () {
 
 });
 
+Route::get('/events', [EventController::class, 'viewAllEventHomePage'])->name('events.viewAllEventHomePage');
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

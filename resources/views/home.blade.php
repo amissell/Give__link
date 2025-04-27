@@ -193,7 +193,7 @@
     </div>
     
     <div class="text-center mt-12 reveal-section">
-      <a href="#" class="btn-modern btn-modern-primary">
+      <a href="{{ route('events.viewAllEventHomePage') }}" class="btn-modern btn-modern-primary">
         View All Events
       </a>
     </div>
