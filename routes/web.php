@@ -104,6 +104,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::middleware(['auth', 'role:volunteer'])->group(function () {
     Route::get('/my-events', [VolunteerController::class, 'myEvents'])->name('Volunteers.events');
     Route::post('/my-events/{event}/cancel', [VolunteerController::class, 'cancelEvent'])->name('volunteer.events.cancel');
+    Route::post('/events/{event}/join', [VolunteerController::class, 'joinEvent'])->name('events.join');
+
 });
 
 
@@ -111,3 +113,4 @@ Route::middleware('auth')->group(function () {
     Route::post('/donation', [DonationController::class, 'store'])->name('donations.store');
 
 });
+

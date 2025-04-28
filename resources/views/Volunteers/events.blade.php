@@ -1,4 +1,4 @@
-@extends('layouts.volunteer-layout')
+@extends('layouts.public')
 
 @section('content')
 <section class="py-20 px-6 bg-white">

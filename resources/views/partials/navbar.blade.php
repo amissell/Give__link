@@ -21,8 +21,19 @@
       <a href="#events" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Events</a>
       <a href="#organizations" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Organizations</a>
       <a href="#about" class="hover:text-green-100 transition-colors duration-200 relative nav-link">About</a>
+      @auth
+      @if (auth()->user()->isVolunteer())
+      <a href="{{ route('Volunteers.events') }}" class="bg-white text-[#10B981] px-5 py-2 rounded-full font-semibold hover:bg-green-50 transition-colors duration-200 shadow-md">My Events</a>
+      @endif
+      <form method="POST" action="{{ route('logout') }}" class="inline">
+        @csrf
+        <button type="submit" class="hover:text-green-100 transition-colors duration-200 ml-4">Logout</button>
+      </form>
+      @else
       <a href="{{ route('login') }}" class="hover:text-green-100 transition-colors duration-200">Log in</a>
       <a href="{{ route('register') }}" class="bg-[#10B981] text-green-500 px-5 py-2 rounded-full font-semibold hover:bg-[#0EA472] transition-colors duration-200 shadow-md">Register</a>
+      @endauth
+
       </div>
   </div>
 
@@ -33,8 +44,19 @@
     <a href="#organizations" class="block py-2 hover:text-green-100 transition-colors duration-200">Organizations</a>
     <a href="#about" class="block py-2 hover:text-green-100 transition-colors duration-200">About</a>
     <div class="pt-2 border-t border-[#27C795] flex flex-col space-y-3 mt-2">
-      <a href="{{ route('login') }}" class="block py-2 hover:text-green-100 transition-colors duration-200">Log in</a>
-      <a href="{{ route('register') }}" class="bg-white text-[#10B981] px-4 py-2 rounded-lg font-semibold hover:bg-green-50 text-center transition-colors duration-200 shadow-md">Register</a>
+    @auth
+    @if (auth()->user()->isVolunteer())
+        <a href="{{ route('Volunteers.events') }}" class="block py-2 hover:text-green-100 transition-colors duration-200">My Events</a>
+    @endif
+    <form method="POST" action="{{ route('logout') }}" class="block">
+        @csrf
+        <button type="submit" class="py-2 hover:text-green-100 transition-colors duration-200 w-full text-left">Logout</button>
+    </form>
+@else
+    <a href="{{ route('login') }}" class="block py-2 hover:text-green-100 transition-colors duration-200">Log in</a>
+    <a href="{{ route('register') }}" class="bg-white text-[#10B981] px-4 py-2 rounded-lg font-semibold hover:bg-green-50 text-center transition-colors duration-200 shadow-md block">Register</a>
+@endauth
+
     </div>
   </div>
 </nav>
