@@ -92,7 +92,7 @@ Route::middleware(['auth', 'role:organization'])->group(function () {
      Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
      Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
      Route::get('events/{event}', [EventController::class, 'show'])->name('events.show');
-     Route::get('/events', [EventController::class, 'organizationEvents'])->name('events.organizationEvents');
+     Route::get('organization-events', [EventController::class, 'organizationEvents'])->name('events.organizationEvents');
 
 });
 
@@ -104,9 +104,10 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::middleware(['auth', 'role:volunteer'])->group(function () {
     Route::get('/my-events', [VolunteerController::class, 'myEvents'])->name('Volunteers.events');
     Route::post('/my-events/{event}/cancel', [VolunteerController::class, 'cancelEvent'])->name('volunteer.events.cancel');
-    Route::post('/events/{event}/join', [VolunteerController::class, 'joinEvent'])->name('events.join');
+    Route::post('/events/{event}/join', action: [VolunteerController::class, 'joinEvent'])->name('joinEvent');
 
 });
+
 
 
 Route::middleware('auth')->group(function () {

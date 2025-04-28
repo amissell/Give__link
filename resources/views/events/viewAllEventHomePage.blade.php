@@ -13,7 +13,6 @@
     </p>
   </div>
   
-  <!-- Wave divider -->
   <div class="absolute bottom-0 left-0 right-0">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-auto">
       <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
@@ -57,7 +56,7 @@
   </div>
 </section>
 
-<!-- Events Grid -->
+<!-- Events List -->
 <section class="section-modern">
   <div class="container mx-auto px-6">
     @if($events->count() > 0)
@@ -90,32 +89,27 @@
                 <span>{{ $event->ville_id }}</span>
               </div>
 
+              <!-- Event Details Link -->
               <a href="{{ route('events.show', $event->id) }}" class="mt-2 inline-block text-[#10B981] font-medium hover:underline relative overflow-hidden group">
                 <span class="relative z-10">Learn more</span>
                 <span class="inline-block ml-1 transition-transform duration-300 transform group-hover:translate-x-1">→</span>
                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#10B981] transition-all duration-300 group-hover:w-full"></span>
               </a>
+              
+              @auth
+                @if(auth()->user()->hasRole('Volunteer'))
+                  <a href="{{ route('joinEvent', $event->id) }}" class="mt-4 inline-block text-white bg-green-500 py-2 px-4 rounded-lg hover:bg-green-600">Join Event</a>
+                @else
+                  <a href="{{ route('register') }}" class="mt-4 inline-block text-white bg-green-500 py-2 px-4 rounded-lg hover:bg-green-600">Become a Volunteer</a>
+                @endif
+              @endauth
             </div>
           </div>
         @endforeach
       </div>
-      
-      <!-- Pagination -->
-      <div class="mt-12 flex justify-center">
-        {{ $events->links() }}
-      </div>
     @else
       <div class="text-center py-12">
-        <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-          </svg>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-gray-800">No Events Found</h3>
-        <p class="text-gray-600 mb-6">There are no events available at the moment. Please check back later.</p>
-        <a href="{{ route('home') }}" class="btn-modern btn-modern-primary">
-          Back to Home
-        </a>
+        <p class="text-xl text-gray-600">No events found.</p>
       </div>
     @endif
   </div>
@@ -142,9 +136,8 @@
 </section>
 
 <script>
-  // You can add event filtering JavaScript here
+  // Event filtering functionality
   document.addEventListener('DOMContentLoaded', function() {
-    // Add any JavaScript for filtering, animations etc.
     const revealItems = document.querySelectorAll('.reveal-item');
     
     const observer = new IntersectionObserver((entries) => {

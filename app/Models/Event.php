@@ -46,4 +46,9 @@ class Event extends Model
         return $this->belongsTo(Ville::class);
     }
 
+    public function events()
+    {
+        return $this->belongsToMany(Event::class);
+    }
+    
 }

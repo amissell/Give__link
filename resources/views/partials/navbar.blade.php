@@ -18,7 +18,7 @@
     <!-- Navbar links (desktop) -->
     <div id="nav-content" class="hidden md:flex md:items-center md:space-x-6 font-medium text-green-500">
       <!-- <a href="#causes" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Causes</a> -->
-      <a href="#events" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Events</a>
+      <a href="events" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Events</a>
       <a href="#organizations" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Organizations</a>
       <a href="#about" class="hover:text-green-100 transition-colors duration-200 relative nav-link">About</a>
       @auth

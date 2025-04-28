@@ -87,7 +87,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed', 
-            'role' => 'required|in:donor,volunteer,organization',
+            'role' => 'required|in:,volunteer,organization',
         ]);
 
         $user = $this->authService->register($validated);

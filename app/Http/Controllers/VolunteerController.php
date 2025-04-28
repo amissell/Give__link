@@ -36,13 +36,12 @@ class VolunteerController extends Controller
     public function joinEvent(Event $event)
     {
         $user = auth()->user();
+        
+        if ($user->hasRole('volunteer')) {
+        $event->users()->attach($user->id);
+        return redirect()->route('Volunteers.joinEvent');
 
-        // Check if already joined
-        if (!$user->events->contains($event)) {
-            $user->events()->attach($event);
-        }
-
-        return redirect()->back()->with('success', 'You have joined the event successfully!');
     }
-
+    return redirect()->route('register');
+    }
 }

@@ -105,13 +105,14 @@ class EventController extends Controller
         $events = Event::orderBy('startEventAt', 'asc')->paginate(12);
         return view('events.viewAllEventHomePage', compact('events'));
     }
-
-
-
     
+    public function myEvents()
+    {
+        $user = auth()->user();
+        $events = $user->events;
+        return view('events.myEvents', compact('events'));
+    }
 
-
-    
 
 
 }
