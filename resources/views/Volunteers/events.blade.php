@@ -8,19 +8,16 @@
 
     <!-- Filter Buttons -->
     <div class="text-center mb-10">
-      <a href="#"
-         class="px-4 py-2 mx-2 {{ $filter == 'upcoming' ? 'bg-green-600 text-white' : 'bg-gray-200' }} rounded-lg">Upcoming</a>
-
-      <a href="#"
-         class="px-4 py-2 mx-2 {{ $filter == 'past' ? 'bg-green-600 text-white' : 'bg-gray-200' }} rounded-lg">Past</a>
+      <a href="#" class="px-4 py-2 mx-2 rounded-lg bg-green-600 text-white hover:bg-green-500">Upcoming</a>
+      <a href="#" class="px-4 py-2 mx-2 rounded-lg bg-gray-300 text-gray-800 hover:bg-gray-400">Past</a>
     </div>
 
     <!-- Events List -->
     <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       @forelse($events as $event)
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transform hover:-translate-y-1">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transform hover:-translate-y-1 transition-all">
           <div class="h-48 relative">
-            <img src="{{ $event->image_url }}" alt="" class="w-full h-full object-cover">
+            <img src="{{ asset('storage/' . $event->image) }}" alt="Event Image" class="w-full h-full object-cover">
             <div class="absolute top-2 right-2">
               @if($event->volunteers->count() >= $event->capacity)
                 <span class="bg-red-600 text-white px-3 py-1 rounded-full text-xs">Event Full</span>
@@ -30,7 +27,7 @@
           <div class="p-6">
             <h3 class="text-xl font-bold text-gray-800 mb-2">{{ $event->title }}</h3>
             <p class="text-sm text-gray-600 mb-2"><strong>Date:</strong> {{ \Carbon\Carbon::parse($event->startEventAt)->format('F j, Y') }}</p>
-            <p class="text-sm text-gray-600 mb-2"><strong>Location:</strong> {{ $event->ville->name }}</p>
+            <p class="text-sm text-gray-600 mb-2"><strong>Location:</strong> {{ $event->ville ? $event->ville->name : 'Not specified' }}</p>
 
             <!-- Progress -->
             <div class="mb-2">
@@ -54,8 +51,4 @@
 
   </div>
 </section>
-
-
-
-
 @endsection

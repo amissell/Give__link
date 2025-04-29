@@ -89,12 +89,12 @@
                 <span>{{ $event->ville_id }}</span>
               </div>
 
-              <!-- Event Details Link -->
-              <a href="{{ route('events.show', $event->id) }}" class="mt-2 inline-block text-[#10B981] font-medium hover:underline relative overflow-hidden group">
+               <a href="{{ route('Volunteers.show_event', $event->id) }}" class="mt-2 inline-block text-[#10B981] font-medium hover:underline relative overflow-hidden group">
                 <span class="relative z-10">Learn more</span>
                 <span class="inline-block ml-1 transition-transform duration-300 transform group-hover:translate-x-1">→</span>
                 <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#10B981] transition-all duration-300 group-hover:w-full"></span>
               </a>
+
               
               @auth
                 @if(auth()->user()->hasRole('Volunteer'))
