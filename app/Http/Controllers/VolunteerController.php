@@ -13,7 +13,7 @@ class VolunteerController extends Controller
     public function myEvents()
     {
         $user = Auth::user();
-        
+        // dd($user->events()->pluck('events.id'));
         $events = $user->events()->with('ville')->get();
         return view('Volunteers.events', compact('events'));
     }
@@ -25,19 +25,22 @@ class VolunteerController extends Controller
         $user->events()->detach($event->id);
         return redirect()->route('Volunteers.events')->with('success', 'You have left the event.');
     }
-
-
-
-
+    
     public function join(Request $request, $eventId)
     {
         $event = Event::findOrFail($eventId);
-        $volunteer = auth()->user();
+        $user = auth()->user();
+        // dd($user->events);
         
-        $event->volunteers()->attach($volunteer->id);
-        
-        return redirect()->route('events.index');
+        if ($event->volunteers()->where('user_id', $user->id)->exists()) {
+            return redirect()->route('Volunteers.events')->with('error', 'You are already registered for this event.');
+        }
+        $event->volunteers()->syncWithoutDetaching([$user->id]);
+        return redirect()->route('Volunteers.events')->with('success', 'You have successfully joined the event.');
     }
+
+
+
 
 
 

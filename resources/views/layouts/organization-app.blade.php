@@ -79,11 +79,6 @@
                             <i class="fas fa-calendar-alt mr-3 text-gray-500 group-hover:text-emerald-500"></i>
                             <span>All Events</span>
                         </a>
-                        
-                        <a href="#" class="sidebar-link flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-gray-50 group">
-                            <i class="fas fa-users mr-3 text-gray-500 group-hover:text-emerald-500"></i>
-                            <span>Volunteers</span>
-                        </a>
                     </nav>
                 </div>
                 

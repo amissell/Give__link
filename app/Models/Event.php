@@ -30,8 +30,9 @@ class Event extends Model
      */
     public function volunteers()
     {
-        return $this->belongsToMany(User::class, 'event_volunteer', 'user_id', 'event_id');
+        return $this->belongsToMany(User::class, 'event_volunteer', 'event_id', 'user_id');
     }
+
 
     /**
      * Get the donations associated with the event.

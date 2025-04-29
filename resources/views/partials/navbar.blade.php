@@ -1,6 +1,6 @@
 <nav class="bg-[#10B981] shadow-md fixed w-full z-50 transition-all duration-300 bg-white" >
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-    <a href="#hero" class="text-2xl font-bold text-green-500 flex items-center space-x-2">
+    <a href="{{ route('home') }}" class="text-2xl font-bold text-green-500 flex items-center space-x-2">
       <!-- Simple logo shape -->
       <div class="flex items-center space-x-2 mb-8">
             <i class="fas fa-hand-holding-heart text-2xl"></i>
@@ -19,8 +19,8 @@
     <div id="nav-content" class="hidden md:flex md:items-center md:space-x-6 font-medium text-green-500">
       <!-- <a href="#causes" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Causes</a> -->
       <a href="events" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Events</a>
-      <a href="#organizations" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Organizations</a>
-      <a href="#about" class="hover:text-green-100 transition-colors duration-200 relative nav-link">About</a>
+      <a href="organizations" class="hover:text-green-100 transition-colors duration-200 relative nav-link">Organizations</a>
+      <a href="about" class="hover:text-green-100 transition-colors duration-200 relative nav-link">About</a>
       @auth
       @if (auth()->user()->isVolunteer())
       <a href="{{ route('Volunteers.events') }}" class="bg-white text-[#10B981] px-5 py-2 rounded-full font-semibold hover:bg-green-50 transition-colors duration-200 shadow-md">My Events</a>

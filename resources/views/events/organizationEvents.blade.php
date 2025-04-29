@@ -74,10 +74,7 @@
                             <i class="fas fa-eye mr-1"></i>
                             View Details
                         </a>
-                        <a href="{{ route('events.edit', $event->id) }}" class="text-emerald-600 hover:text-emerald-700 font-medium text-sm flex items-center">
-                            <i class="fas fa-edit mr-1"></i>
-                            Edit
-                        </a>
+
                     </div>
                 </div>
             </div>

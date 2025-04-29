@@ -1,8 +1,10 @@
 @extends('layouts.organization-app')
 
 @section('content')
+<div class="max-h-[80vh] overflow-y-auto">
+
 <div class="mb-8 reveal-item">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between ">
         <div>
             <h1 class="text-3xl font-bold text-gray-800">
                 Event <span class="gradient-text">Details</span>
@@ -202,6 +204,8 @@
         </div>
     </div>
 </div>
+</div>
+
 
 <style>
 /* Animation classes */
