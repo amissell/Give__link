@@ -115,25 +115,23 @@
       <p class="text-lg opacity-90 max-w-2xl mx-auto">See the difference we're making worldwide through collective action.</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+      <!-- Number of Events -->
       <div class="glass-effect rounded-lg p-8 backdrop-blur-sm hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105 hover:shadow-xl counter-card reveal-item delay-100">
-        <h3 class="text-4xl font-bold mb-2 counter" data-target="2500000">$0</h3>
-        <p class="text-lg opacity-90">Funds Raised</p>
+        <h3 class="text-4xl font-bold mb-2 counter" data-target="{{ $totalEvents }}">{{ $totalEvents }}</h3>
+        <p class="text-lg opacity-90">Events Held</p>
       </div>
       
+      <!-- Number of Organizations -->
       <div class="glass-effect rounded-lg p-8 backdrop-blur-sm hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105 hover:shadow-xl counter-card reveal-item delay-200">
-        <h3 class="text-4xl font-bold mb-2 counter" data-target="150">0</h3>
-        <p class="text-lg opacity-90">Active Causes</p>
+        <h3 class="text-4xl font-bold mb-2 counter" data-target="{{ $totalOrganizations }}">{{ $totalOrganizations }}</h3>
+        <p class="text-lg opacity-90">Organizations Involved</p>
       </div>
       
+      <!-- Volunteers -->
       <div class="glass-effect rounded-lg p-8 backdrop-blur-sm hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105 hover:shadow-xl counter-card reveal-item delay-300">
-        <h3 class="text-4xl font-bold mb-2 counter" data-target="10000">0</h3>
+        <h3 class="text-4xl font-bold mb-2 counter" data-target="{{ $totalVolunteers }}">{{ $totalVolunteers }}</h3>
         <p class="text-lg opacity-90">Volunteers</p>
-      </div>
-      
-      <div class="glass-effect rounded-lg p-8 backdrop-blur-sm hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105 hover:shadow-xl counter-card reveal-item delay-400">
-        <h3 class="text-4xl font-bold mb-2 counter" data-target="32">0</h3>
-        <p class="text-lg opacity-90">Countries Reached</p>
       </div>
     </div>
   </div>
@@ -145,6 +143,7 @@
     </svg>
   </div>
 </section>
+
 
 <section id="events" class="section-modern">
   <div class="container mx-auto">

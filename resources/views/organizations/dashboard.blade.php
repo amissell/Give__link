@@ -33,7 +33,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-500 text-sm font-medium uppercase tracking-wider">Total Events Created</p>
-                    <h2 class="text-4xl font-bold text-emerald-600 mt-2 counter-value" data-target="12">0</h2>
+                    <h2 class="text-4xl font-bold text-emerald-600 mt-2 counter-value" data-target="{{ $totalEvents }}">0</h2>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
                     <i class="fas fa-calendar-alt text-emerald-500 text-xl"></i>
@@ -53,7 +53,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-500 text-sm font-medium uppercase tracking-wider">Total Volunteers</p>
-                    <h2 class="text-4xl font-bold text-emerald-600 mt-2 counter-value" data-target="48">0</h2>
+                    <h2 class="text-4xl font-bold text-emerald-600 mt-2 counter-value" data-target="{{ $totalVolunteers }}">0</h2>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
                     <i class="fas fa-users text-emerald-500 text-xl"></i>
@@ -184,12 +184,12 @@
                 </table>
             </div>
             
-            <!-- Pagination if needed -->
-            @if(isset($events) && $events->hasPages())
-                <div class="px-6 py-3 border-t border-gray-200">
-                    {{ $events->links() }}
-                </div>
-            @endif
+            @if($events->hasPages())
+            <div class="px-6 py-3 border-t border-gray-200">
+            {{ $events->links() }}
+        </div>
+        @endif
+
         </div>
     </div>
     

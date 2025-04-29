@@ -15,9 +15,14 @@ class OrganizationDashboardController extends Controller
      */
     public function dashboard()
     {
-        $organization = Auth::user()->organization;
-        return view('organizations.dashboard');
+        $organization = Auth::user()->organization; 
+        $events = $organization->events()->withCount('volunteers')->paginate(10); 
+        $totalEvents = $events->count(); 
+        $totalVolunteers = $events->sum('volunteers_count'); 
+        
+        return view('organizations.dashboard', compact('events', 'totalEvents', 'totalVolunteers'));
     }
+
     
     
     public function index()

@@ -29,23 +29,16 @@ class VolunteerController extends Controller
 
 
 
-    public function join(Event $event)
+    public function join(Request $request, $eventId)
     {
-        $user = auth()->user();
+        $event = Event::findOrFail($eventId);
+        $volunteer = auth()->user();
         
-        $alreadyJoined = DB::table('event_volunteer')
-        ->where('event_id', $event->id)
-        ->where('user_id', $user->id)
-        ->exists();
+        $event->volunteers()->attach($volunteer->id);
         
-        if ($alreadyJoined) {
-            return redirect()->back()->with('error', 'You have already joined this event.');
-        }
-        $user->events()->attach($event->id);
-
-        
-        return redirect()->route('Volunteers.events')->with('success', 'You have successfully joined the event.');
+        return redirect()->route('events.index');
     }
+
 
 
 
