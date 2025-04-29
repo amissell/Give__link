@@ -12,7 +12,6 @@ class UserController extends Controller
     {
         $role = $request->get('role');
 
-        // If a role is selected, filter by role
         $users = User::when($role, function ($query) use ($role) {
             $query->whereHas('roles', function ($q) use ($role) {
                 $q->where('name', $role);

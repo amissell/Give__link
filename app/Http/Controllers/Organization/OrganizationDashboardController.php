@@ -16,7 +16,6 @@ class OrganizationDashboardController extends Controller
     public function dashboard()
     {
         $organization = Auth::user()->organization;
-        // $events = Event::where('organization_id', $organization->id)->withCount('volunteers')->get();
         return view('organizations.dashboard');
     }
     

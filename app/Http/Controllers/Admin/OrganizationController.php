@@ -47,7 +47,7 @@ class OrganizationController extends Controller
 
         // Create the organization with a 'pending' status
         Organization::create([
-            'user_id' => auth()->id(),  // Attach the current authenticated user
+            'user_id' => auth()->id(),
             'name' => $request->name,
             'category_id' => $request->category_id,
             'description' => $request->description,
@@ -83,15 +83,11 @@ class OrganizationController extends Controller
     public function update(Request $request, $id)
 {
     $organization = Organization::findOrFail($id);
-
-    // Ensure the user is an admin
-    if (auth()->user()->is_admin) {  // Assuming you have an 'is_admin' field in your User model
-        // Validate the status input (either 'approved' or 'rejected')
+    if (auth()->user()->is_admin) { 
         $request->validate([
             'status' => 'required|in:approved,rejected',
         ]);
 
-        // Update the organization status
         $organization->update([
             'status' => $request->status,
         ]);

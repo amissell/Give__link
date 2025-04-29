@@ -1,4 +1,4 @@
-<nav class="bg-[#10B981] shadow-md fixed w-full z-50 transition-all duration-300">
+<nav class="bg-[#10B981] shadow-md fixed w-full z-50 transition-all duration-300 bg-white" >
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     <a href="#hero" class="text-2xl font-bold text-green-500 flex items-center space-x-2">
       <!-- Simple logo shape -->

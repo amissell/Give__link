@@ -43,13 +43,10 @@ class ForgotPasswordController extends Controller
         return back()->with('message', 'We have e-mailed your password reset link!');
     }
 
-    // Show the reset password form
     public function showResetPasswordForm($token): View
     {
         return view('auth.resetPassword', ['token' => $token]);
     }
-
-    // Handle the password reset logic
     public function resetPassword(Request $request)
     {
         // Validate the request
@@ -66,7 +63,6 @@ class ForgotPasswordController extends Controller
             return back()->withErrors(['email' => 'This reset link is invalid.']);
         }
 
-        // Reset the password
         $user = User::where('email', $request->email)->first();
         $user->password = Hash::make($request->password);
         $user->save();

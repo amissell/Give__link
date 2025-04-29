@@ -98,7 +98,12 @@
               
               @auth
                 @if(auth()->user()->hasRole('Volunteer'))
-                  <a href="{{ route('joinEvent', $event->id) }}" class="mt-4 inline-block text-white bg-green-500 py-2 px-4 rounded-lg hover:bg-green-600">Join Event</a>
+                <form action="{{ route('Volunteers.joinEvent', $event->id) }}" method="POST" class="mt-4">
+                  @csrf
+                  <button type="submit" class="inline-block text-white bg-green-500 py-2 px-4 rounded-lg hover:bg-green-600">
+                    Join Event
+                  </button>
+                </form>
                 @else
                   <a href="{{ route('register') }}" class="mt-4 inline-block text-white bg-green-500 py-2 px-4 rounded-lg hover:bg-green-600">Become a Volunteer</a>
                 @endif
