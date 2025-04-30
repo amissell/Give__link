@@ -14,7 +14,7 @@ class Event extends Model
 
     protected $fillable = [
         'title', 'description', 'startEventAt', 'endEventAt',
-        'capacity', 'type', 'organization_id', 'image', 'ville_id'
+        'capacity', 'type', 'organization_id', 'image', 'ville_id', 'amount', 'min_amount'
     ];
 
     /**

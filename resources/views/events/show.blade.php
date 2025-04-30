@@ -71,8 +71,13 @@
                     
                     <div class="flex items-center">
                         <i class="fas fa-users text-emerald-500 mr-2"></i>
+                        @if($event->type === 'donation')
+                        <span>{{ $event->donation_amount ?? '' }} MAD donated</span>
+                        @else
                         <span>{{ $event->capacity ?? 'Unlimited' }} capacity</span>
+                        @endif
                     </div>
+
                 </div>
                 
                 <div class="mb-6">

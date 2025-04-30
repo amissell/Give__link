@@ -29,9 +29,11 @@ class EventController extends Controller
         'startEventAt' => 'required|date',
         'endEventAt' => 'required|date|after:startEventAt',
         'capacity' => 'required|integer|min:1',
-        'type' => 'required|in:volunteering,donation,awareness',
+        'type' => 'required|in:volunteering,donation',
         'ville_id' => 'required|exists:villes,id',
         'image' => 'nullable|image',
+        'amount' => 'required_if:type,donation|nullable|numeric|min:0',
+        'min_amount' => 'required_if:type,donation|nullable|numeric|min:0',
     ]);
     
     $imagePath = $request->file('image')->store('events', 'public');
@@ -47,6 +49,8 @@ class EventController extends Controller
         'ville_id' => $request->ville_id,
         'image' => $imagePath, 
         'organization_id' => auth()->user()->organization->id,
+        'amount' => $request->input('amount'),
+        'min_amount' => $request->input('min_amount'),
     ]);
 
     return redirect()->route('events.show', $event->id)
@@ -112,7 +116,4 @@ class EventController extends Controller
         $events = $user->events;
         return view('events.myEvents', compact('events'));
     }
-
-
-
 }

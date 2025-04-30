@@ -20,7 +20,7 @@
         <a href="{{ route('register') }}" class="btn-modern btn-modern-primary">
           Get Started
         </a>
-        <a href="#how-it-works" class="btn-modern btn-modern-outline border-white text-green-400 hover:bg-white hover:bg-opacity-10">
+        <a href="how-it-works" class="btn-modern btn-modern-outline border-white text-green-400 hover:bg-white hover:bg-opacity-10">
           Learn How
         </a>
       </div>
@@ -181,7 +181,7 @@
               <span>{{ $event->ville->name }}</span>
             </div>
 
-            <a href="#" class="mt-2 inline-block text-[#10B981] font-medium hover:underline relative overflow-hidden group">
+            <a href="{{ route('register') }}" class="mt-2 inline-block text-[#10B981] font-medium hover:underline relative overflow-hidden group">
               <span class="relative z-10">Learn more</span>
               <span class="inline-block ml-1 transition-transform duration-300 transform group-hover:translate-x-1">→</span>
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#10B981] transition-all duration-300 group-hover:w-full"></span>
@@ -250,13 +250,14 @@
   <div class="absolute bottom-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full translate-x-1/3 translate-y-1/3"></div>
   
   <div class="container mx-auto px-6 relative z-10">
-    <div class="max-w-2xl mx-auto text-center reveal-section">
+    <dv class="max-w-2xl mx-auto text-center reveal-section">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-green-400">Stay Connected</h2>
       <p class="text-lg text-green-400 opacity-90 mb-8">
         Join our newsletter to get updates on new causes, events, and ways to make an impact.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+      <form method="POST" action="/newsletter/subscribe" class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+      @csrf
         <input
           type="email"
           placeholder="Your email address"
@@ -265,7 +266,7 @@
         <button class="btn-modern btn-modern-primary bg-white text-[#10B981] hover:bg-teal-50">
           Subscribe
         </button>
-      </div>
+  </form>
     </div>
   </div>
 </section>

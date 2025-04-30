@@ -56,13 +56,27 @@
                     <select name="type" id="type" class="w-full border border-gray-300 rounded-lg p-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" required>
                         <option value="volunteering" {{ old('type') == 'volunteering' ? 'selected' : '' }}>Volunteering</option>
                         <option value="donation" {{ old('type') == 'donation' ? 'selected' : '' }}>Donation</option>
-                    </select>
+                    </select>   
                 </div>
                 @error('type')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
         </div>
+
+
+        <div id="capacity-field" class="space-y-2 hidden">
+        <label for="capacity" class="block text-sm font-medium text-gray-700">Capacity</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="fas fa-users text-gray-400"></i>
+            </div>
+            <input type="number" name="capacity" id="capacity" class="w-full border border-gray-300 rounded-lg p-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" value="{{ old('capacity') }}">
+        </div>
+        @error('capacity')
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
+    </div>
 
         <div class="space-y-2">
             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
@@ -102,39 +116,52 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div id="donation-fields" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden">
             <div class="space-y-2">
-                <label for="capacity" class="block text-sm font-medium text-gray-700">Capacity</label>
+                <label for="amount" class="block text-sm font-medium text-gray-700">Donation Amount (MAD)</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <i class="fas fa-users text-gray-400"></i>
+                        <i class="fas fa-coins text-gray-400"></i>
                     </div>
-                    <input type="number" name="capacity" id="capacity" class="w-full border border-gray-300 rounded-lg p-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" value="{{ old('capacity') }}" required>
+                    <input type="number" name="amount" id="amount" step="0.01" class="w-full border border-gray-300 rounded-lg p-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" value="{{ old('amount') }}">
                 </div>
-                @error('capacity')
+                @error('amount')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="space-y-2">
-                <label for="ville_id" class="block text-sm font-medium text-gray-700">Location</label>
+                <label for="min_amount" class="block text-sm font-medium text-gray-700">Minimum Donation (MAD)</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <i class="fas fa-map-marker-alt text-gray-400"></i>
+                        <i class="fas fa-donate text-gray-400"></i>
                     </div>
-                    <select name="ville_id" id="ville_id" class="w-full border border-gray-300 rounded-lg p-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" required>
-                        <option value="">-- Select Location --</option>
-                        @foreach($villes as $ville)
-                            <option value="{{ $ville->id }}" {{ old('ville_id') == $ville->id ? 'selected' : '' }}>
-                                {{ $ville->name }}
-                            </option>
-                        @endforeach
-                    </select>
+                    <input type="number" name="min_amount" id="min_amount" class="w-full border border-gray-300 rounded-lg p-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" value="{{ old('min_amount') }}">
                 </div>
-                @error('ville_id')
+                @error('min_amount')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
+        </div>
+
+        <div class="space-y-2">
+            <label for="ville_id" class="block text-sm font-medium text-gray-700">Location</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-map-marker-alt text-gray-400"></i>
+                </div>
+                <select name="ville_id" id="ville_id" class="w-full border border-gray-300 rounded-lg p-3 pl-10 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all" required>
+                    <option value="">-- Select Location --</option>
+                    @foreach($villes as $ville)
+                        <option value="{{ $ville->id }}" {{ old('ville_id') == $ville->id ? 'selected' : '' }}>
+                            {{ $ville->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            @error('ville_id')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="space-y-2">
@@ -181,30 +208,44 @@
 </div>
 
 <script>
-    // Image preview functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const imageInput = document.getElementById('image');
-        const imagePreview = document.getElementById('image-preview');
-        const previewImg = imagePreview.querySelector('img');
-        const removeButton = document.getElementById('remove-image');
+    document.addEventListener('DOMContentLoaded', function () {
+    const typeSelect = document.getElementById('type');
+    const donationFields = document.getElementById('donation-fields');
+    const amountField = document.getElementById('amount');
+    const minAmountField = document.getElementById('min_amount');
+    const capacityField = document.getElementById('capacity-field');
+    const capacityInput = document.getElementById('capacity');
 
-        imageInput.addEventListener('change', function() {
-            if (this.files && this.files[0]) {
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    previewImg.src = e.target.result;
-                    imagePreview.classList.remove('hidden');
-                }
-                
-                reader.readAsDataURL(this.files[0]);
-            }
-        });
+    function toggleDonationFields() {
+        if (typeSelect.value === 'donation') {
+            donationFields.classList.remove('hidden');
+            amountField.setAttribute('required', true);
+            minAmountField.setAttribute('required', true);
+        } else {
+            donationFields.classList.add('hidden');
+            amountField.removeAttribute('required');
+            minAmountField.removeAttribute('required');
+        }
+    }
 
-        removeButton.addEventListener('click', function() {
-            imageInput.value = '';
-            imagePreview.classList.add('hidden');
-        });
+    function toggleCapacityField() {
+        if (typeSelect.value === 'volunteering') {
+            capacityField.classList.remove('hidden');
+            capacityInput.setAttribute('required', true);
+        } else {
+            capacityField.classList.add('hidden');
+            capacityInput.removeAttribute('required');
+        }
+    }
+
+    toggleDonationFields();
+    toggleCapacityField();
+
+    typeSelect.addEventListener('change', function () {
+        toggleDonationFields();
+        toggleCapacityField();
     });
+});
+
 </script>
 @endsection
