@@ -109,9 +109,6 @@ Route::middleware(['auth', 'role:volunteer'])->group(function () {
     Route::get('/volunteers/event/{id}', [VolunteerController::class, 'showEvent'])->name('Volunteers.show_event');
 });
 
+Route::get('/events/search', [EventController::class, 'search'])->name('events.search');
 
 
-Route::middleware('auth')->group(function () {
-    Route::post('/donation', [DonationController::class, 'store'])->name('donations.store');
-
-});

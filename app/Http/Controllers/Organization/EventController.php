@@ -109,6 +109,21 @@ class EventController extends Controller
         $events = Event::orderBy('startEventAt', 'asc')->paginate(12);
         return view('events.viewAllEventHomePage', compact('events'));
     }
+
+
+    // Search method to return search results
+    public function search(Request $request)
+    {
+        $query = $request->input('search');
+        $events = Event::where('name', 'like', '%' . $query . '%')->get();
+        
+        if ($request->ajax()) {
+            return view('components.event-cards', compact('events'));
+        }
+        return view('events.index', compact('events'));
+    }
+
+
     
     public function myEvents()
     {
@@ -116,4 +131,5 @@ class EventController extends Controller
         $events = $user->events;
         return view('events.myEvents', compact('events'));
     }
+
 }
