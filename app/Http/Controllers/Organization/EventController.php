@@ -61,7 +61,7 @@ class EventController extends Controller
 
     public function edit(Event $event)
     {
-        $this->authorize('update', $event);
+        // $this->authorize('update', $event);
         $villes = Ville::orderBy('name')->get();
         return view('events.edit', compact('event', 'villes'));
     }
@@ -69,7 +69,7 @@ class EventController extends Controller
 
     public function update(Request $request, Event $event)
     {
-        $this->authorize('update', $event);
+        // $this->authorize('update', $event);
 
         $validated = $request->validate([
             'title' => 'required',
@@ -86,7 +86,7 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
-        $this->authorize('delete', $event);
+        // $this->authorize('delete', $event);
         $event->delete();
         return redirect()->route('organizations.dashboard')->with('success', 'Event deleted.');
     }

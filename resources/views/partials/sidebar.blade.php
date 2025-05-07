@@ -31,20 +31,6 @@
                 <i class="fas fa-user-cog"></i>
                 <span>Manage Users</span>
             </a>
-
-            <!-- Reports (Optional) -->
-            <a href="#"
-                class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
-                <i class="fas fa-file-alt"></i>
-                <span>Reports</span>
-            </a>
-
-            <!-- Settings -->
-            <a href="#"
-                class="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-emerald-600 transition-colors">
-                <i class="fas fa-cog"></i>
-                <span>Settings</span>
-            </a>
         </div>
     </div>
     
