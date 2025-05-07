@@ -17,7 +17,6 @@
         <i class="fas fa-hourglass-half"></i>
       </div>
     </div>
-    <!-- <a href="{{ route('admin.organizations.pending') }}" class="text-sm text-indigo-600 hover:underline">View Pending</a> -->
   </div>
 
   <!-- Approved Organizations -->

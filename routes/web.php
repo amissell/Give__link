@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Organization\EventController;
 use App\Http\Controllers\Organization\DonationController;
 use App\Http\Controllers\VolunteerController;
+use App\Http\Controllers\ProfileController;
 
 Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -28,7 +29,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function (
   Route::get('organizations/manage', [OrganizationController::class, 'adminIndex'])->name('organizations.manage');
   Route::patch('organizations/{id}', [OrganizationController::class, 'update'])->name('organizations.update');
   Route::get('organizations/{id}', [OrganizationController::class, 'show'])->name('organizations.show');
-  Route::get('/organizations/pending', [OrganizationController::class, 'pending'])->name('admin.organizations.pending');
+//   Route::get('/organizations/pending', [OrganizationController::class, 'pending'])->name('admin.organizations.pending');
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
+
 
 
 });
