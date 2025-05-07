@@ -31,6 +31,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function (
   Route::get('organizations/{id}', [OrganizationController::class, 'show'])->name('organizations.show');
 //   Route::get('/organizations/pending', [OrganizationController::class, 'pending'])->name('admin.organizations.pending');
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+Route::post('/profile/upload-photo', [ProfileController::class, 'uploadPhoto'])->name('profile.uploadPhoto')->middleware(['auth']);
+
 
 
 
