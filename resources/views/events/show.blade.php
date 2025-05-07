@@ -178,7 +178,11 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    @if($volunteer->pivot && $volunteer->pivot->created_at)
                                     {{ $volunteer->pivot->created_at->format('M j, Y') }}
+                                    @else
+                                    <span class="text-gray-400">Not available</span>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="px-2 py-1 text-xs font-medium bg-emerald-100 text-emerald-800 rounded-full">

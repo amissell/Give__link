@@ -113,30 +113,22 @@
                 
                 <!-- Right side icons -->
                 <div class="flex items-center space-x-4">
-                    <button class="text-gray-500 hover:text-emerald-500 relative">
-                        <i class="fas fa-bell text-xl"></i>
-                        <span class="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
-                    </button>
-                    
-                    <button class="text-gray-500 hover:text-emerald-500">
-                        <i class="fas fa-envelope text-xl"></i>
-                    </button>
-                    
                     <div class="relative">
-                        <button class="flex items-center space-x-2 focus:outline-none">
-                            <div class="h-8 w-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-500">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <span class="hidden md:inline-block text-sm font-medium">{{ Auth::user()->organization->name ?? Auth::user()->name }}</span>
-                            <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                        <button id="profile-button" class="flex items-center space-x-2 focus:outline-none">
+                            <img src="{{ Auth::user()->profile_picture ?? 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->organization->name) }}"
+                            alt="Profile" class="w-8 h-8 rounded-full object-cover border border-gray-300">
+                            <span class="text-sm text-gray-700 font-medium">{{ Auth::user()->organization->name ?? Auth::user()->name }}</span>
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
                         </button>
+                        <div id="profile-menu" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md z-50">
+                            <a href="{{ route('profile') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">View Profile</a>
+                        </div>
                     </div>
+                </nav>
+                <div class="p-6">
+                    @yield('content')
                 </div>
-            </nav>
-            <div class="p-6">
-                @yield('content')
             </div>
         </div>
-    </div>
 </body>
 </html>
