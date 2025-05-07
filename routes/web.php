@@ -28,6 +28,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('dashboard')->group(function (
   Route::get('organizations/manage', [OrganizationController::class, 'adminIndex'])->name('organizations.manage');
   Route::patch('organizations/{id}', [OrganizationController::class, 'update'])->name('organizations.update');
   Route::get('organizations/{id}', [OrganizationController::class, 'show'])->name('organizations.show');
+  Route::get('/organizations/pending', [OrganizationController::class, 'pending'])->name('admin.organizations.pending');
+
 
 });
 

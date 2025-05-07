@@ -1,88 +1,67 @@
 @extends('layouts.app')
 
 @section('title', 'Admin Dashboard')
-
 @section('page-title', 'Admin Dashboard Overview')
 
 @section('content')
-<!-- Stats Cards -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+
   <!-- Pending Organizations -->
-   
   <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
     <div class="flex justify-between items-center mb-4">
       <div>
         <p class="text-sm font-medium text-gray-500">Pending Organizations</p>
-        <h3 class="text-2xl font-bold text-indigo-700"></h3>
+        <h3 class="text-2xl font-bold text-indigo-700">{{ $pendingOrganizationsCount }}</h3>
       </div>
       <div class="p-3 rounded-full bg-indigo-100 text-indigo-700">
+        <i class="fas fa-hourglass-half"></i>
+      </div>
+    </div>
+    <!-- <a href="{{ route('admin.organizations.pending') }}" class="text-sm text-indigo-600 hover:underline">View Pending</a> -->
+  </div>
+
+  <!-- Approved Organizations -->
+  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <p class="text-sm font-medium text-gray-500">Approved Organizations</p>
+        <h3 class="text-2xl font-bold text-green-600">{{ $approvedOrganizationsCount }}</h3>
+      </div>
+      <div class="p-3 rounded-full bg-green-100 text-green-600">
+        <i class="fas fa-check-circle"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total Users -->
+  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <p class="text-sm font-medium text-gray-500">Total Users</p>
+        <h3 class="text-2xl font-bold text-blue-700">{{ $usersCount }}</h3>
+      </div>
+      <div class="p-3 rounded-full bg-blue-100 text-blue-700">
         <i class="fas fa-users"></i>
       </div>
     </div>
-    <a href="" class="text-sm text-indigo-600 hover:underline">View Pending</a>
+    <a href="{{ route('admin.users.index') }}" class="text-sm text-blue-600 hover:underline">Manage Users</a>
   </div>
-  
-  <!-- Pending Events -->
+
+  <!-- Total Categories -->
   <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
     <div class="flex justify-between items-center mb-4">
       <div>
-        <p class="text-sm font-medium text-gray-500">Pending Events</p>
-        <h3 class="text-2xl font-bold text-amber-600"></h3>
+        <p class="text-sm font-medium text-gray-500">Categories</p>
+        <h3 class="text-2xl font-bold text-yellow-700">{{ $categoriesCount }}</h3>
       </div>
-      <div class="p-3 rounded-full bg-amber-100 text-amber-600">
-        <i class="fas fa-calendar-alt"></i>
-      </div>
-    </div>
-    <a href="" class="text-sm text-amber-600 hover:underline">View Pending</a>
-  </div>
-  
-  <!-- Pending Donations -->
-  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-    <div class="flex justify-between items-center mb-4">
-      <div>
-        <p class="text-sm font-medium text-gray-500">Pending Donations</p>
-        <h3 class="text-2xl font-bold text-emerald-700"></h3>
-      </div>
-      <div class="p-3 rounded-full bg-emerald-100 text-emerald-700">
-        <i class="fas fa-dollar-sign"></i>
+      <div class="p-3 rounded-full bg-yellow-100 text-yellow-700">
+        <i class="fas fa-tags"></i>
       </div>
     </div>
-    <a href="" class="text-sm text-emerald-600 hover:underline">View Pending</a>
+    <a href="{{ route('categories.index') }}" class="text-sm text-yellow-600 hover:underline">Manage Categories</a>
   </div>
-  
-  <!-- Total Organizations -->
-  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-    <div class="flex justify-between items-center mb-4">
-      <div>
-        <p class="text-sm font-medium text-gray-500">Total Organizations</p>
-        <h3 class="text-2xl font-bold text-indigo-700"></h3>
-      </div>
-      <div class="p-3 rounded-full bg-indigo-100 text-indigo-700">
-        <i class="fas fa-users"></i>
-      </div>
-    </div>
-  </div>
+
 </div>
 
-<!-- Quick Actions Section -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-  <!-- Accept Organization -->
-  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-    <h3 class="text-xl font-semibold text-gray-800 mb-4">Accept New Organizations</h3>
-    <a href="" class="block text-lg text-indigo-600 hover:underline">View and Accept Organizations</a>
-  </div>
-
-  <!-- Accept Event -->
-  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-    <h3 class="text-xl font-semibold text-gray-800 mb-4">Accept Upcoming Events</h3>
-    <a href="" class="block text-lg text-amber-600 hover:underline">View and Accept Events</a>
-  </div>
-
-  <!-- Accept Donations -->
-  <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-    <h3 class="text-xl font-semibold text-gray-800 mb-4">Accept Donations</h3>
-    <a href="" class="block text-lg text-emerald-600 hover:underline">View and Accept Donations</a>
-  </div>
-</div>
 
 @endsection
