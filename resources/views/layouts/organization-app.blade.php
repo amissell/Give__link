@@ -50,7 +50,7 @@
 </head>
 
 <body class="bg-gray-50">
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-[80rem]">
         <!-- Sidebar -->
         <div class="hidden md:flex md:flex-shrink-0">
             <div class="flex flex-col w-64 bg-white border-r border-gray-200">

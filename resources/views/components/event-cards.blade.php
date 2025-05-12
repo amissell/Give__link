@@ -1,3 +1,4 @@
+
 @if($events->count())
   @foreach($events as $index => $event)
     <div class="modern-card reveal-item delay-{{ $index % 4 * 100 }}">
@@ -7,13 +8,13 @@
         <p class="text-sm text-gray-600 mt-2">{{ $event->description }}</p>
         <div class="mt-4 flex items-center justify-between text-sm text-gray-600">
           <span><i class="fas fa-calendar-alt mr-1"></i>{{ \Carbon\Carbon::parse($event->startEventAt)->format('d M Y') }}</span>
-          <span><i class="fas fa-calendar-alt mr-1"></i>{{ \Carbon\Carbon::parse($event->endEventAt)->format('d M Y') }}</span>
-          <span><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->ville->nom }}</span>
+          <!-- <span><i class="fas fa-calendar-alt mr-1"></i>{{ \Carbon\Carbon::parse($event->endEventAt)->format('d M Y') }}</span> -->
+          <span><i class="fas fa-map-marker-alt mr-1"></i>{{ $event->ville->name }}</span>
         </div>
         <form action="{{ route('Volunteers.joinEvent', $event->id) }}" method="POST" class="mt-4">
           @csrf
-          <button type="submit" class="join-button w-full bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition-colors">
-            Join
+          <button type="submit" class="inline-block text-white bg-green-500 py-2 px-4 rounded-lg hover:bg-green-600">
+            Join Event
           </button>
         </form>
       </div>

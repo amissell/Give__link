@@ -1,9 +1,10 @@
 @extends('layouts.organization-app')
 
 @section('content')
-<div class="max-h-[80vh] overflow-y-auto">
 
-<div class="mb-8 reveal-item">
+<div class="max-h-[80vh]">
+<div class="overflow-y-auto">
+<div class="mb-8 reveal-item ">
     <div class="flex flex-col md:flex-row md:items-center md:justify-between ">
         <div>
             <h1 class="text-3xl font-bold text-gray-800">
@@ -123,23 +124,23 @@
         </div>
         
         <!-- Action Buttons -->
-        <div class="mt-8 pt-6 border-t border-gray-100 flex flex-wrap gap-4">
+        <!-- <div class="mt-8 pt-6 border-t border-gray-100 flex flex-wrap gap-4">
             <a href="{{ route('events.edit', $event->id) }}" class="btn-emerald px-4 py-2 rounded-lg flex items-center shadow-md hover:shadow-lg">
                 <i class="fas fa-edit mr-2"></i>
                 Edit Event
-            </a>
+            </a> -->
             
             <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="inline"
                   onsubmit="return confirm('Are you sure you want to delete this event? This action cannot be undone.')">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center">
+                <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
                     <i class="fas fa-trash mr-2"></i>
                     Delete Event
                 </button>
             </form>
             
-            <a href="{{ route('events.organizationEvents') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center">
+            <a href="{{ route('events.organizationEvents') }}" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors ">
                 <i class="fas fa-list mr-2"></i>
                 All Events
             </a>
@@ -212,6 +213,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 </div>
 

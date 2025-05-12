@@ -20,42 +20,6 @@
     </div>
   </section>
 
-  <!-- Filter Section (Optional) -->
-  <section class="py-8 bg-gray-50">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <!-- Filter Dropdown (You can expand this) -->
-        <div class="flex flex-wrap gap-4 items-center">
-          <span class="text-gray-600 font-medium">Filter by:</span>
-          <select class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white">
-            <option value="">All Categories</option>
-            <option value="education">Education</option>
-            <option value="environment">Environment</option>
-            <option value="health">Health</option>
-            <option value="community">Community</option>
-          </select>
-        </div>
-        
-        
-        <form method="GET" action="{{ route('events.search') }}" id="search" class="flex items-center space-x-2 mb-4">
-          <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search..."
-          class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring focus:border-blue-300"><button
-          type="submit"
-          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Search</button>
-        </form>
-
-        
-
-
-      </div>
-    </div>
-  </section>
-
-
   <section class="section-modern">
     <div class="container mx-auto px-6">
       @if($events->count() > 0)

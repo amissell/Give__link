@@ -13,13 +13,6 @@
             </h1>
             <p class="text-gray-600 mt-2">Review and manage organization registrations</p>
         </div>
-        
-        <div class="mt-4 md:mt-0">
-            <a href="{{ route('organizations.create') }}" class="btn-emerald px-4 py-2 rounded-lg flex items-center shadow-md hover:shadow-lg">
-                <i class="fas fa-plus mr-2"></i>
-                Add Organization
-            </a>
-        </div>
     </div>
 </div>
 

@@ -13,7 +13,7 @@
             </h1>
             <p class="text-gray-600 mt-2">View detailed information about this user</p>
         </div>
-        
+
         <div class="mt-4 md:mt-0">
             <a href="{{ route('admin.users.index') }}" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-all flex items-center">
                 <i class="fas fa-arrow-left mr-2"></i>
@@ -94,27 +94,6 @@
             <div class="space-y-2">
                 <p class="text-sm font-medium text-gray-500">Joined On</p>
                 <p class="text-lg font-medium text-gray-900">{{ $user->created_at->format('F j, Y') }}</p>
-            </div>
-        </div>
-        
-        <div class="mt-8 pt-6 border-t border-gray-100">
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Actions</h3>
-            
-            <div class="flex flex-wrap gap-3">
-                <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center">
-                    <i class="fas fa-edit mr-2"></i>
-                    Edit User
-                </a>
-                
-                <form action="#" method="POST" class="inline-block"
-                      onsubmit="return confirm('Are you sure you want to delete this user? This action cannot be undone.')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center">
-                        <i class="fas fa-trash mr-2"></i>
-                        Delete User
-                    </button>
-                </form>
             </div>
         </div>
     </div>

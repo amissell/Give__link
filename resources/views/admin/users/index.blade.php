@@ -27,13 +27,6 @@
                 <option value="volunteer" {{ request('role') == 'volunteer' ? 'selected' : '' }}>Volunteer</option>
             </select>
         </div>
-        
-        <div class="ml-auto">
-            <button type="submit" class="btn-emerald px-4 py-2 rounded-lg flex items-center shadow-sm hover:shadow-md">
-                <i class="fas fa-filter mr-2"></i>
-                Apply Filters
-            </button>
-        </div>
     </form>
 
     <div class="overflow-x-auto">
